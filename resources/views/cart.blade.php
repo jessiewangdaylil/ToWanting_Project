@@ -34,7 +34,7 @@
                     <td>
                       <div class="media">
                         <div class="d-flex">
-                          <img src="assets/img/gallery/card1.png" alt="" />
+                          <img src="{{asset('img/gallery/card1.png')}}" alt="" />
                         </div>
                         <div class="media-body">
                           <p>Minimalistic shop for multipurpose use</p>
@@ -59,7 +59,7 @@
                     <td>
                       <div class="media">
                         <div class="d-flex">
-                          <img src="assets/img/gallery/card2.png" alt="" />
+                          <img src="{{asset('img/gallery/card2.png')}}" alt="" />
                         </div>
                         <div class="media-body">
                           <p>Minimalistic shop for multipurpose use</p>

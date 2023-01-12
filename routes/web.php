@@ -30,18 +30,18 @@ Route::middleware([
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
-// Route::namespace ('App\Http\controllers')->group(function () {
-//     Route::get('/index', 'SiteController@index');
-//     Route::get('/about', 'SiteController@about');
-//     Route::get('/blog_details', 'SiteController@blog_details');
-//     Route::get('/blog', 'SiteController@blog');
-//     Route::get('/cart', 'SiteController@cart');
-//     Route::get('/checkout', 'SiteController@checkout');
-//     Route::get('/confirmation', 'SiteController@confirmation');
-//     Route::get('/contact', 'SiteController@contact');
-//     Route::get('/elements', 'SiteController@elements');
-//     Route::get('/product_details', 'SiteController@product_details');
-//     Route::get('/product_list', 'SiteController@product_list');
-//     Route::get('/shop', 'SiteController@shop');
+Route::namespace ('App\Http\controllers')->group(function () {
+    Route::get('/index', 'SiteController@index');
+    Route::get('/about', 'SiteController@about');
+    Route::get('/blog_details', 'SiteController@blog_details');
+    Route::get('/blog', 'SiteController@blog');
+    Route::get('/cart', 'SiteController@cart');
+    Route::get('/checkout', 'SiteController@checkout');
+    Route::get('/confirmation', 'SiteController@confirmation');
+    Route::get('/contact', 'SiteController@contact');
+    Route::get('/elements', 'SiteController@elements');
+    Route::get('/product_details', 'SiteController@product_details');
+    Route::get('/product_list', 'SiteController@product_list');
+    Route::get('/shop', 'SiteController@shop');
 
-// });
+});
