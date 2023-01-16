@@ -8,7 +8,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="hero-cap text-center">
-                                <h2>Blog</h2>
+                                <h2>{{__('Blog').'-'.$cgy->title}}</h2>
                             </div>
                         </div>
                     </div>
@@ -22,117 +22,32 @@
                 <div class="row">
                     <div class="col-lg-8 mb-5 mb-lg-0">
                         <div class="blog_left_sidebar">
-                            <article class="blog_item">
+                        @foreach ($art_cgy as $article)
+                           <article class="blog_item">
                                 <div class="blog_item_img">
-                                    <img class="card-img rounded-0" src="{{asset('img/blog/single_blog_1.png')}}" alt="">
+                                    <img class="card-img rounded-0" src="{{Voyager::image($article->getFirstPic())}}" alt="">
                                     <a href="#" class="blog_item_date">
-                                        <h3>15</h3>
-                                        <p>Jan</p>
+                                        <h3>{{$article->created_at->isoFormat('Do')}}</h3>
+                                        <p>{{$article->created_at->isoFormat('MMM')}}</p>
                                     </a>
                                 </div>
 
                                 <div class="blog_details">
                                     <a class="d-inline-block" href="single-blog.html">
-                                        <h2>Google inks pact for new 35-storey office</h2>
+                                        <h2>{{$article->title}}</h2>
                                     </a>
-                                    <p>That dominion stars lights dominion divide years for fourth have don't stars is that
-                                        he earth it first without heaven in place seed it second morning saying.</p>
+                                    <p>{{$article->content_small}}</p>
                                     <ul class="blog-info-link">
-                                        <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                                        <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                                        <li><a href="#"><i class="fa fa-user"></i> {{$cgy->title}}</a></li>
+                                        <li><a href="#"><i class="fa fa-comments"></i> 03 {{__('Comments')}}</a></li>
                                     </ul>
                                 </div>
                             </article>
+                            @endforeach
+                          {{$art_cgy->links()}}
 
-                            <article class="blog_item">
-                                <div class="blog_item_img">
-                                    <img class="card-img rounded-0" src="{{asset('img/blog/single_blog_2.png')}}" alt="">
-                                    <a href="#" class="blog_item_date">
-                                        <h3>15</h3>
-                                        <p>Jan</p>
-                                    </a>
-                                </div>
 
-                                <div class="blog_details">
-                                    <a class="d-inline-block" href="single-blog.html">
-                                        <h2>Google inks pact for new 35-storey office</h2>
-                                    </a>
-                                    <p>That dominion stars lights dominion divide years for fourth have don't stars is that
-                                        he earth it first without heaven in place seed it second morning saying.</p>
-                                    <ul class="blog-info-link">
-                                        <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                                        <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
-                                    </ul>
-                                </div>
-                            </article>
-
-                            <article class="blog_item">
-                                <div class="blog_item_img">
-                                    <img class="card-img rounded-0" src="{{asset('img/blog/single_blog_3.png')}}" alt="">
-                                    <a href="#" class="blog_item_date">
-                                        <h3>15</h3>
-                                        <p>Jan</p>
-                                    </a>
-                                </div>
-
-                                <div class="blog_details">
-                                    <a class="d-inline-block" href="single-blog.html">
-                                        <h2>Google inks pact for new 35-storey office</h2>
-                                    </a>
-                                    <p>That dominion stars lights dominion divide years for fourth have don't stars is that
-                                        he earth it first without heaven in place seed it second morning saying.</p>
-                                    <ul class="blog-info-link">
-                                        <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                                        <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
-                                    </ul>
-                                </div>
-                            </article>
-
-                            <article class="blog_item">
-                                <div class="blog_item_img">
-                                    <img class="card-img rounded-0" src="{{asset('img/blog/single_blog_4.png')}}" alt="">
-                                    <a href="#" class="blog_item_date">
-                                        <h3>15</h3>
-                                        <p>Jan</p>
-                                    </a>
-                                </div>
-
-                                <div class="blog_details">
-                                    <a class="d-inline-block" href="single-blog.html">
-                                        <h2>Google inks pact for new 35-storey office</h2>
-                                    </a>
-                                    <p>That dominion stars lights dominion divide years for fourth have don't stars is that
-                                        he earth it first without heaven in place seed it second morning saying.</p>
-                                    <ul class="blog-info-link">
-                                        <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                                        <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
-                                    </ul>
-                                </div>
-                            </article>
-
-                            <article class="blog_item">
-                                <div class="blog_item_img">
-                                    <img class="card-img rounded-0" src="{{asset('img/blog/single_blog_5.png')}}" alt="">
-                                    <a href="#" class="blog_item_date">
-                                        <h3>15</h3>
-                                        <p>Jan</p>
-                                    </a>
-                                </div>
-
-                                <div class="blog_details">
-                                    <a class="d-inline-block" href="single-blog.html">
-                                        <h2>Google inks pact for new 35-storey office</h2>
-                                    </a>
-                                    <p>That dominion stars lights dominion divide years for fourth have don't stars is that
-                                        he earth it first without heaven in place seed it second morning saying.</p>
-                                    <ul class="blog-info-link">
-                                        <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                                        <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
-                                    </ul>
-                                </div>
-                            </article>
-
-                            <nav class="blog-pagination justify-content-center d-flex">
+                            {{-- <nav class="blog-pagination justify-content-center d-flex">
                                 <ul class="pagination">
                                     <li class="page-item">
                                         <a href="#" class="page-link" aria-label="Previous">
@@ -151,7 +66,7 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </nav>
+                            </nav> --}}
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -174,44 +89,33 @@
                             </aside>
 
                             <aside class="single_sidebar_widget post_category_widget">
-                                <h4 class="widget_title">Category</h4>
+                                <h4 class="widget_title">{{__('Category')}}</h4>
                                 <ul class="list cat-list">
+
                                     <li>
-                                        <a href="#" class="d-flex">
-                                            <p>Resaurant food</p>
-                                            <p>(37)</p>
+                                        <a href="{{url("/blog/{$all_art_cgy->id}")}}" class="d-flex">
+                                            <p>{{__('All Articles')}}</p>
+                                            <p>({{$all_art_cgies->count()}})</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="d-flex">
-                                            <p>Travel news</p>
-                                            <p>(10)</p>
+                                        <a href="{{url('/blog')}}" class="d-flex">
+                                            <p>{{__('New Articles')}}</p>
+                                            <p>({{count($art_cgy)}})</p>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="#" class="d-flex">
-                                            <p>Modern technology</p>
-                                            <p>(03)</p>
+                            @foreach ($art_cgies as $cgy)
+                            <li>
+                                        <a href="{{url("/blog/{$cgy->id}")}}" class="d-flex">
+                                            <p>{{$cgy->title}}</p>
+                                   @if ($loop->index ==0)
+                                       <p></p>
+                                   @else
+                                        <p>({{$art_qty[$loop->index]}})</p>
+                                   @endif
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="#" class="d-flex">
-                                            <p>Product</p>
-                                            <p>(11)</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex">
-                                            <p>Inspiration</p>
-                                            <p>21</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex">
-                                            <p>Health Care (21)</p>
-                                            <p>09</p>
-                                        </a>
-                                    </li>
+                            @endforeach
                                 </ul>
                             </aside>
 

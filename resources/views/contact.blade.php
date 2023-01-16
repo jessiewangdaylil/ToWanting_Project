@@ -66,7 +66,7 @@
                         <h2 class="contact-title">{{__('Get in Touch')}}</h2>
                     </div>
                     <div class="col-lg-8">
-                        <form class="form-contact contact_form" action="{{url('admin/contacts.php')}}" method="post" id="contactForm" novalidate="novalidate">
+                        <form class="form-contact contact_form" action="{{url('contacts.php')}}" method="post" id="" novalidate="novalidate">
                           @csrf
                             <div class="row">
                                 <div class="col-12">
@@ -76,7 +76,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <input class="form-control valid" name="name" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder="Enter your name">
+                                        <+++++++++++++++++++++++++++++++++++++++++++++++ class="form-control valid" name="name" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder="Enter your name">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">

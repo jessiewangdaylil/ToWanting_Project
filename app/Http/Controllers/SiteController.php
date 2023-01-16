@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Cgy;
 use App\Models\Contact;
 use App\Models\Element;
 use App\Models\Item;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Request;
 
 class SiteController extends Controller
@@ -22,6 +24,7 @@ class SiteController extends Controller
     }
     public function shop()
     {
+// 實體商品
         $realOfCgy = Cgy::find(5);
         $realCgies = Cgy::where('parent_id', 5)->get();
         $index = 0;
@@ -40,7 +43,7 @@ class SiteController extends Controller
             }
             $realProdArr = null;
         }
-//
+// 虛擬商品
         $virtualOfCgy = Cgy::find(6);
         $virtualCgies = Cgy::where('parent_id', 6)->get();
         $index = 0;
@@ -59,16 +62,12 @@ class SiteController extends Controller
             }
             $realProdArr = null;
         }
-
+//
         return view('shop', compact('realOfCgy', 'realProduct', 'virtualOfCgy', 'virtualProduct'));
     }
     public function product_details(Item $item)
     {
         return view('product_details', compact('item'));
-    }
-    public function blog_details()
-    {
-        return view('blog_details');
     }
     public function contact()
     {
@@ -89,9 +88,46 @@ class SiteController extends Controller
         return view('about');
     }
 
-    public function blog()
+    public function blog(Cgy $cgies, Article $ariticle)
     {
-        return view('blog');
+        $all_art_cgies = Article::where('status', 'online')->get();
+
+        if (!(is_null($cgies->id))) {
+
+            if ($cgies->title == '所有文章') {
+//所有文章
+                $cgy = $cgies;
+                $art_cgy = Article::where('status', 'online')->paginate(5);
+//所有文章
+
+            } else {
+//分類文章
+                $cgy = Cgy::where('id', $cgies->id)->first();
+                $art_cgy = $cgy->articles()->where('status', 'online')->paginate(5);
+//有分類文章
+            }
+        } else {
+//當週最新文章
+            $cgy = Cgy::where('title', '最新文章')->first();
+            $art_cgy = Article::where('status', 'online')->where('updated_at', '>', Carbon::now()->subWeekday())->orderBy('sort', 'desc')->paginate(5);
+            // dd($art_cgy);
+        }
+//有分類文章
+//Rightside menu
+        $art_cgy_title = ['時事', '旅遊', '美食', '運動/休閒', '寵物', '科技'];
+        $index = 0;
+        foreach ($art_cgy_title as $key) {
+            $art_cgies[$index] = Cgy::where('title', $key)->first();
+            $art_qty[$index] = count(Article::where('cgy_id', $art_cgies[$index]->id)->where('status', 'online')->get());
+            $index++;
+        }
+        $all_art_cgy = Cgy::where('title', '所有文章')->first();
+        return view('blog', compact('cgy', 'art_cgy', 'art_cgies', 'art_qty', 'all_art_cgy', 'all_art_cgies'));
+//Rightside menu
+    }
+    public function blog_details()
+    {
+        return view('blog_details');
     }
     public function checkout()
     {

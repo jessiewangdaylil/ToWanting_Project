@@ -22,4 +22,13 @@ class Article extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function getFirstPic()
+    {
+        $pics = json_decode($this->pic);
+        if (is_array($pics) && count($pics) > 0) {
+            return $pics[0];
+        } else {
+            return null;
+        }
+    }
 }
