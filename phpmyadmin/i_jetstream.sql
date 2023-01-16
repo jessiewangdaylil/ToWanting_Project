@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2023-01-16 01:48:42
+-- 產生時間： 2023-01-16 04:56:06
 -- 伺服器版本： 10.4.22-MariaDB
 -- PHP 版本： 8.1.2
 
@@ -103,7 +103,15 @@ INSERT INTO `cgies` (`id`, `parent_id`, `title`, `pic`, `desc`, `enabled`, `sort
 (18, 6, '平台擴充工具', '[]', NULL, 1, 3, NULL, '2023-01-15 07:00:17', '2023-01-15 07:00:17', NULL),
 (19, 6, '生產力工具', '[]', NULL, 1, 3, NULL, '2023-01-15 07:01:40', '2023-01-15 07:01:40', '<i class=\"fa-duotone fa-lightbulb\"></i>'),
 (20, 6, '電子票卷', '[]', NULL, 1, 3, NULL, '2023-01-15 07:03:25', '2023-01-15 07:03:25', '<i class=\"fa-solid fa-ticket\"></i>'),
-(21, 6, 'NFT加密藝術', '[]', NULL, 1, 3, NULL, '2023-01-15 07:05:00', '2023-01-15 07:05:00', '<i class=\"fa-sharp fa-solid fa-hexagon-vertical-nft-slanted\"></i>');
+(21, 6, 'NFT加密藝術', '[]', NULL, 1, 3, NULL, '2023-01-15 07:05:00', '2023-01-15 07:05:00', '<i class=\"fa-sharp fa-solid fa-hexagon-vertical-nft-slanted\"></i>'),
+(22, NULL, '部落格文章', '[]', NULL, 1, 1, NULL, '2023-01-16 03:43:06', '2023-01-16 03:43:06', '<i class=\"fa-duotone fa-scroll\"></i>'),
+(23, 22, '旅遊', '[]', NULL, 1, 4, NULL, '2023-01-16 03:44:00', '2023-01-16 03:48:00', '<i class=\"fa-duotone fa-plane-departure\"></i>'),
+(24, 22, '美食', '[]', NULL, 1, 2, NULL, '2023-01-16 03:44:29', '2023-01-16 03:44:29', NULL),
+(25, 22, '興趣', '[]', NULL, 1, 3, NULL, '2023-01-16 03:45:25', '2023-01-16 03:45:25', '<i class=\"fa-sharp fa-solid fa-music\"></i>'),
+(26, 22, '時事', '[]', NULL, 1, 4, NULL, '2023-01-16 03:46:30', '2023-01-16 03:46:30', '<i class=\"fa-duotone fa-bullhorn\"></i>'),
+(27, 22, '關係', '[]', NULL, 1, 1, NULL, '2023-01-16 03:47:32', '2023-01-16 03:47:32', '<i class=\"fa-duotone fa-heart\"></i>'),
+(28, 22, '科技', '[]', NULL, 1, 5, NULL, '2023-01-16 03:49:07', '2023-01-16 03:49:07', '<i class=\"fa-duotone fa-microchip\"></i>'),
+(29, 22, '寵物', '[]', NULL, 1, 6, NULL, '2023-01-16 03:49:52', '2023-01-16 03:49:52', '<i class=\"fa-duotone fa-dog\"></i>');
 
 -- --------------------------------------------------------
 
@@ -278,7 +286,42 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (99, 4, 'icon_html', 'code_editor', 'Icon html', 0, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"6\",\"id\":\"icon_htmlid\"}}', 9),
 (100, 6, 'vender_id', 'text', '販賣商ID', 0, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"1\",\"id\":\"enabled_id\"}}', 11),
 (101, 6, 'item_belongsto_cgy_relationship', 'relationship', '類別', 1, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"1\",\"id\":\"cgy_id\"},\"model\":\"App\\\\Models\\\\Cgy\",\"table\":\"cgies\",\"type\":\"belongsTo\",\"column\":\"cgy_id\",\"key\":\"id\",\"label\":\"title\",\"pivot_table\":\"article_tag\",\"pivot\":\"0\",\"taggable\":\"0\"}', 4),
-(103, 6, 'item_belongsto_user_relationship', 'relationship', '販賣商ID', 1, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"1\",\"id\":\"enabled_id\"},\"model\":\"App\\\\Models\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"vender_id\",\"key\":\"id\",\"label\":\"id\",\"pivot_table\":\"article_tag\",\"pivot\":\"0\",\"taggable\":\"0\"}', 10);
+(103, 6, 'item_belongsto_user_relationship', 'relationship', '販賣商ID', 1, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"1\",\"id\":\"enabled_id\"},\"model\":\"App\\\\Models\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"vender_id\",\"key\":\"id\",\"label\":\"id\",\"pivot_table\":\"article_tag\",\"pivot\":\"0\",\"taggable\":\"0\"}', 10),
+(104, 8, 'id', 'text', 'Id', 1, 1, 0, 0, 0, 0, '{}', 1),
+(105, 8, 'name', 'text', '填表人', 1, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"3\",\"id\":\"name_id_id\"},\"validation\":{\"rule\":\"required|max:20\"}}', 5),
+(106, 8, 'mobile', 'text', '手機號碼', 0, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"3\",\"id\":\"mobile_id\"},\"validation\":{\"rule\":\"max:20\"}}', 6),
+(107, 8, 'subject', 'text', '主旨', 1, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"12\",\"id\":\"subject_id\"},\"validation\":{\"rule\":\"required|max:100\"}}', 8),
+(108, 8, 'mode', 'hidden', '模式', 0, 0, 0, 0, 0, 0, '{\"display\":{\"width\":\"3\",\"id\":\"mode_id\"},\"validation\":{\"rule\":\"max:100\"}}', 9),
+(109, 8, 'message', 'text_area', '訊息', 0, 0, 1, 1, 1, 1, '{\"display\":{\"width\":\"12\",\"id\":\"message_id\"},\"validation\":{\"rule\":\"max:500\"}}', 13),
+(110, 8, 'service', 'text', '所需服務', 0, 0, 1, 1, 1, 1, '{\"display\":{\"width\":\"3\",\"id\":\"service_id\"},\"validation\":{\"rule\":\"max:40\"}}', 10),
+(111, 8, 'email', 'text', '電子郵箱', 0, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"3\",\"id\":\"email_id\"},\"validation\":{\"rule\":\"max:100\"}}', 7),
+(112, 8, 'status', 'select_dropdown', '聯絡單狀態', 1, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"3\",\"id\":\"status_id\"},\"default\":\"none\",\"options\":{\"none\":\"\\u5c1a\\u672a\\u8655\\u7406\",\"handled\":\"\\u8655\\u7406\\u4e2d\",\"done\":\"\\u5df2\\u5b8c\\u6210\"}}', 4),
+(113, 8, 'tag', 'text', '標籤', 0, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"3\",\"id\":\"tag_id\"},\"validation\":{\"rule\":\"max:100\"}}', 11),
+(114, 8, 'handler_id', 'hidden', '處理者ID', 0, 0, 0, 0, 0, 0, '{\"display\":{\"width\":\"3\",\"id\":\"handler_id_id\"}}', 2),
+(115, 8, 'creator_id', 'hidden', '建立者ID', 0, 0, 0, 0, 0, 0, '{\"display\":{\"width\":\"3\",\"id\":\"creator_id_id\"}}', 3),
+(116, 8, 'source', 'text', '來源', 0, 0, 1, 1, 1, 1, '{\"display\":{\"width\":\"3\",\"id\":\"source_id\"},\"validation\":{\"rule\":\"max:20\"}}', 12),
+(117, 8, 'created_at', 'timestamp', '建立於', 0, 1, 1, 1, 0, 1, '{}', 14),
+(118, 8, 'updated_at', 'timestamp', '更新於', 0, 1, 0, 0, 0, 0, '{}', 15),
+(119, 9, 'id', 'text', 'Id', 1, 1, 0, 0, 0, 0, '{}', 1),
+(120, 9, 'cgy_id', 'text', '分類ID', 1, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"2\",\"id\":\"cgy_id_id\"},\"validation\":{\"rule\":\"required\"}}', 6),
+(121, 9, 'title', 'text', '標題', 1, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"12\",\"id\":\"title_id\"},\"validation\":{\"rule\":\"required|max:40\"}}', 9),
+(122, 9, 'author_id', 'text', '作者ID', 1, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"2\",\"id\":\"author_id\"},\"validation\":{\"rule\":\"required\"}}', 8),
+(123, 9, 'content_small', 'text_area', '部分內容', 0, 0, 1, 1, 1, 1, '{\"display\":{\"width\":\"12\",\"id\":\"content_small\"},\"validation\":{\"rule\":\"max:80\"}}', 10),
+(124, 9, 'content', 'rich_text_box', '內容', 1, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"12\",\"id\":\"content_id\"}}', 11),
+(125, 9, 'attachment_names', 'text', '附件檔名', 0, 0, 1, 1, 1, 1, '{\"display\":{\"width\":\"4\",\"id\":\"attachment_names_id\"},\"validation\":{\"rule\":\"max:200\"}}', 12),
+(126, 9, 'attachment_paths', 'text', '附件路徑', 0, 0, 1, 1, 1, 1, '{\"display\":{\"width\":\"8\",\"id\":\"attachment_paths_id\"},\"validation\":{\"rule\":\"max:500\"}}', 13),
+(127, 9, 'sort', 'number', '排序', 1, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"2\",\"id\":\"sort_id\"},\"validation\":{\"rule\":\"required\"}}', 2),
+(128, 9, 'status', 'select_dropdown', '狀態', 1, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"2\",\"id\":\"status_id\"},\"validation\":{\"rule\":\"required|max:30\"},\"default\":\"draft\",\"options\":{\"draft\":\"\\u8349\\u641e\",\"online\":\"\\u4e0a\\u7dda\"}}', 3),
+(129, 9, 'featured', 'checkbox', '是否精選', 1, 1, 1, 1, 1, 1, '{\"0\":\"\\u95dc\\u9589\",\"1\":\"\\u555f\\u7528\",\"display\":{\"width\":\"2\",\"id\":\"featured_id\"},\"validation\":{\"rule\":\"required\"},\"checked\":true}', 4),
+(130, 9, 'meta_description', 'text_area', 'Meta Description', 0, 0, 1, 1, 1, 1, '{\"display\":{\"width\":\"12\",\"id\":\"meta_description_id\"},\"validation\":{\"rule\":\"max:255\"}}', 15),
+(131, 9, 'meta_keywords', 'text', 'Meta Keywords', 0, 0, 1, 1, 1, 1, '{\"display\":{\"width\":\"12\",\"id\":\"meta_keywords_id\"},\"validation\":{\"rule\":\"max:255\"}}', 16),
+(132, 9, 'seo_title', 'text', 'Seo Title', 0, 0, 1, 1, 1, 1, '{\"display\":{\"width\":\"12\",\"id\":\"seo_title_id\"},\"validation\":{\"rule\":\"max:255\"}}', 17),
+(133, 9, 'slug', 'text', 'Slug', 0, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"12\",\"id\":\"slug_id\"},\"validation\":{\"rule\":\"max:255\"}}', 18),
+(134, 9, 'pic', 'media_picker', '圖片', 1, 1, 1, 1, 1, 1, '{\"0\":\"\\u95dc\\u9589\",\"1\":\"\\u555f\\u7528\",\"display\":{\"width\":\"12\",\"id\":\"pic_id\"},\"checked\":true,\"validation\":{\"rule\":\"max:255\"},\"max\":10,\"min\":0,\"expanded\":true,\"show_folders\":true,\"show_toolbar\":true,\"allow_upload\":true,\"allow_move\":true,\"allow_delete\":true,\"allow_create_folder\":true,\"allow_rename\":true,\"allow_crop\":true,\"allowed\":[\"image\",\"audio\",\"video\"],\"hide_thumbnails\":true,\"quality\":90,\"show_as_images\":true,\"thumbnails\":[{\"type\":\"fit\",\"name\":\"fit-500\",\"width\":500,\"height\":500,\"x\":50,\"y\":50,\"position\":\"center\"}]}', 14),
+(135, 9, 'created_at', 'timestamp', '建立', 0, 1, 1, 1, 0, 1, '{}', 19),
+(136, 9, 'updated_at', 'timestamp', '更新於', 0, 0, 0, 0, 0, 0, '{}', 20),
+(137, 9, 'article_belongsto_cgy_relationship', 'relationship', '類別', 1, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"2\",\"id\":\"cgy_id_id\"},\"model\":\"App\\\\Models\\\\Cgy\",\"table\":\"cgies\",\"type\":\"belongsTo\",\"column\":\"cgy_id\",\"key\":\"id\",\"label\":\"title\",\"pivot_table\":\"article_tag\",\"pivot\":\"0\",\"taggable\":\"0\"}', 5),
+(138, 9, 'article_belongsto_user_relationship', 'relationship', '作者ID', 1, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"2\",\"id\":\"author_id\"},\"model\":\"App\\\\Models\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"author_id\",\"key\":\"id\",\"label\":\"id\",\"pivot_table\":\"article_tag\",\"pivot\":\"0\",\"taggable\":\"0\"}', 7);
 
 -- --------------------------------------------------------
 
@@ -313,8 +356,10 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (2, 'menus', 'menus', '側邊欄', '側邊欄', 'voyager-list', 'TCG\\Voyager\\Models\\Menu', NULL, '', '', 1, 0, NULL, '2023-01-12 20:03:27', '2023-01-12 20:03:27'),
 (3, 'roles', 'roles', '角色', '角色', 'voyager-lock', 'TCG\\Voyager\\Models\\Role', NULL, 'TCG\\Voyager\\Http\\Controllers\\VoyagerRoleController', '', 1, 0, NULL, '2023-01-12 20:03:27', '2023-01-12 20:03:27'),
 (4, 'cgies', 'cgies', '分類', '分類集', 'voyager-bag', 'App\\Models\\Cgy', NULL, NULL, NULL, 1, 1, '{\"order_column\":\"sort\",\"order_display_column\":\"title\",\"order_direction\":\"asc\",\"default_search_key\":\"title\",\"scope\":null}', '2023-01-12 20:45:39', '2023-01-15 06:42:37'),
-(5, 'elements', 'elements', '網路元素', '網路元素集', 'voyager-puzzle', 'App\\Models\\Element', NULL, NULL, NULL, 1, 1, '{\"order_column\":\"sort\",\"order_display_column\":\"page\",\"order_direction\":\"asc\",\"default_search_key\":\"page\",\"scope\":null}', '2023-01-14 05:21:05', '2023-01-15 05:59:16'),
-(6, 'items', 'items', '商品', '商品集', 'voyager-dollar', 'App\\Models\\Item', NULL, NULL, NULL, 1, 1, '{\"order_column\":\"sort\",\"order_display_column\":\"title\",\"order_direction\":\"asc\",\"default_search_key\":\"title\",\"scope\":null}', '2023-01-14 08:10:35', '2023-01-15 08:44:58');
+(5, 'elements', 'elements', '網路元素', '網路元素集', 'voyager-puzzle', 'App\\Models\\Element', NULL, NULL, NULL, 1, 1, '{\"order_column\":\"sort\",\"order_display_column\":\"page\",\"order_direction\":\"asc\",\"default_search_key\":\"page\",\"scope\":null}', '2023-01-14 05:21:05', '2023-01-16 01:10:03'),
+(6, 'items', 'items', '商品', '商品集', 'voyager-dollar', 'App\\Models\\Item', NULL, NULL, NULL, 1, 1, '{\"order_column\":\"sort\",\"order_display_column\":\"title\",\"order_direction\":\"asc\",\"default_search_key\":\"title\",\"scope\":null}', '2023-01-14 08:10:35', '2023-01-15 08:44:58'),
+(8, 'contacts', 'contacts', '聯絡單', '聯絡單集', 'voyager-paper-plane', 'App\\Models\\Contact', NULL, NULL, NULL, 1, 1, '{\"order_column\":\"id\",\"order_display_column\":\"creator_id\",\"order_direction\":\"asc\",\"default_search_key\":\"name\",\"scope\":null}', '2023-01-16 00:59:30', '2023-01-16 03:01:39'),
+(9, 'articles', 'articles', '文章', '文章集', 'voyager-news', 'App\\Models\\Article', NULL, NULL, NULL, 1, 1, '{\"order_column\":\"sort\",\"order_display_column\":\"created_at\",\"order_direction\":\"desc\",\"default_search_key\":\"created_at\",\"scope\":null}', '2023-01-16 02:48:52', '2023-01-16 03:55:23');
 
 -- --------------------------------------------------------
 
@@ -556,7 +601,9 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 (43, 3, '常見問題', '/question', '_blank', NULL, '#000000', 42, 1, '2023-01-15 05:12:03', '2023-01-15 05:12:22', NULL, ''),
 (44, 3, '條款和條件', '/terms_conditions', '_blank', NULL, '#000000', 42, 2, '2023-01-15 05:13:07', '2023-01-15 05:13:10', NULL, ''),
 (45, 3, '隱私權政策', '/privacy_policy', '_blank', NULL, '#000000', 42, 3, '2023-01-15 05:13:45', '2023-01-15 05:13:48', NULL, ''),
-(46, 3, '問題回報', '/inquire', '_blank', NULL, '#000000', 42, 4, '2023-01-15 05:15:15', '2023-01-15 05:15:18', NULL, '');
+(46, 3, '問題回報', '/inquire', '_blank', NULL, '#000000', 42, 4, '2023-01-15 05:15:15', '2023-01-15 05:15:18', NULL, ''),
+(47, 1, '聯絡單集', '', '_self', 'voyager-paper-plane', NULL, NULL, 18, '2023-01-16 00:59:30', '2023-01-16 00:59:30', 'voyager.contacts.index', NULL),
+(48, 1, '文章集', '', '_self', 'voyager-news', NULL, NULL, 19, '2023-01-16 02:48:52', '2023-01-16 02:48:52', 'voyager.articles.index', NULL);
 
 -- --------------------------------------------------------
 
@@ -732,7 +779,17 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (37, 'read_items', 'items', '2023-01-14 08:10:35', '2023-01-14 08:10:35'),
 (38, 'edit_items', 'items', '2023-01-14 08:10:35', '2023-01-14 08:10:35'),
 (39, 'add_items', 'items', '2023-01-14 08:10:35', '2023-01-14 08:10:35'),
-(40, 'delete_items', 'items', '2023-01-14 08:10:35', '2023-01-14 08:10:35');
+(40, 'delete_items', 'items', '2023-01-14 08:10:35', '2023-01-14 08:10:35'),
+(41, 'browse_contacts', 'contacts', '2023-01-16 00:59:30', '2023-01-16 00:59:30'),
+(42, 'read_contacts', 'contacts', '2023-01-16 00:59:30', '2023-01-16 00:59:30'),
+(43, 'edit_contacts', 'contacts', '2023-01-16 00:59:30', '2023-01-16 00:59:30'),
+(44, 'add_contacts', 'contacts', '2023-01-16 00:59:30', '2023-01-16 00:59:30'),
+(45, 'delete_contacts', 'contacts', '2023-01-16 00:59:30', '2023-01-16 00:59:30'),
+(46, 'browse_articles', 'articles', '2023-01-16 02:48:52', '2023-01-16 02:48:52'),
+(47, 'read_articles', 'articles', '2023-01-16 02:48:52', '2023-01-16 02:48:52'),
+(48, 'edit_articles', 'articles', '2023-01-16 02:48:52', '2023-01-16 02:48:52'),
+(49, 'add_articles', 'articles', '2023-01-16 02:48:52', '2023-01-16 02:48:52'),
+(50, 'delete_articles', 'articles', '2023-01-16 02:48:52', '2023-01-16 02:48:52');
 
 -- --------------------------------------------------------
 
@@ -789,7 +846,17 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (37, 1),
 (38, 1),
 (39, 1),
-(40, 1);
+(40, 1),
+(41, 1),
+(42, 1),
+(43, 1),
+(44, 1),
+(45, 1),
+(46, 1),
+(47, 1),
+(48, 1),
+(49, 1),
+(50, 1);
 
 -- --------------------------------------------------------
 
@@ -852,14 +919,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('1radQvTVpnM1XA4iPKWv93Iyqe5amqUky3J0qgQl', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiZzJMbk5oTlNQTklrUTZtWnpPSndpekV6QmV6NFJaMmZoNVRuNkVGSyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NzM6Imh0dHA6Ly9sb2NhbGhvc3Q6NjA4MC9JLkpldHN0cmVhbS9wdWJsaWMvcHJvZHVjdF9kZXRhaWxzL3NpdGUud2VibWFuaWZlc3QiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1673829867),
-('EUuv6W7N5JxJegtpFvraiOeQFD0jDnbv6geddJ3t', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiUDZ4ZGNFRGpDQmpwUEg5R1JITkNRODNtZUowWDR5aFpzeGpLaXpSRyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NzM6Imh0dHA6Ly9sb2NhbGhvc3Q6NjA4MC9JLkpldHN0cmVhbS9wdWJsaWMvcHJvZHVjdF9kZXRhaWxzL3NpdGUud2VibWFuaWZlc3QiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1673829932),
-('EytCT6D3sTi4SX4xudfkyRQGqzRVt1AhreRWYf6s', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiOVRqQXB3aWhpZ2J3eklOR1BzYmRLUE1WVUlOVXpTakZ5ZXJjUFowUyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NzM6Imh0dHA6Ly9sb2NhbGhvc3Q6NjA4MC9JLkpldHN0cmVhbS9wdWJsaWMvcHJvZHVjdF9kZXRhaWxzL3NpdGUud2VibWFuaWZlc3QiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1673824191),
-('OeXACtWiT3epvVnhQHfSIsvVV2rrnmpPm641KouX', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoieDRMcW1RR0VZYTdSVGpqdVB4UDFzY0MwMjk2c3AyekdYak5BcDZXZiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NzM6Imh0dHA6Ly9sb2NhbGhvc3Q6NjA4MC9JLkpldHN0cmVhbS9wdWJsaWMvcHJvZHVjdF9kZXRhaWxzL3NpdGUud2VibWFuaWZlc3QiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1673823890),
-('qb1t0dxERuu2nrsMYEWaIFgac3cBNtamnk4GjFNr', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiQlFpV0VhWG1ITmdxbXhSWjhsNjA4WWJGUWZuelJuejRIODBXa092YyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NzM6Imh0dHA6Ly9sb2NhbGhvc3Q6NjA4MC9JLkpldHN0cmVhbS9wdWJsaWMvcHJvZHVjdF9kZXRhaWxzL3NpdGUud2VibWFuaWZlc3QiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1673826500),
-('SdbloiGy6v4MWLgZrqWBAZ3UBlMVSIktUKASe4bQ', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiNUlBUDZKaEhXbGE4Y0Fqbno3dGJialdtdlFyS3JQb0NsNmNtN0VDcSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NzM6Imh0dHA6Ly9sb2NhbGhvc3Q6NjA4MC9JLkpldHN0cmVhbS9wdWJsaWMvcHJvZHVjdF9kZXRhaWxzL3NpdGUud2VibWFuaWZlc3QiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1673829921),
-('VESfzPYpn8Yw5gl4Az0LO53vqjwD7WzEjjuBrdiu', 1, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoicDBoUjc5c2o1ZGxHV0dpR2FTZnpPdUoxUjEwZksydkxub0k3aFlJViI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHA6Ly9sb2NhbGhvc3Q6NjA4MC9JLkpldHN0cmVhbS9wdWJsaWMvYWRtaW4iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjM6InVybCI7YTowOnt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1673830099),
-('WHrr5HxoiDxb9GfwoJYPgIO8PGNNZaeHK46HMpqG', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiOHNKcTVUSlg2SmZHWGc2Zm1PbVdXN0djZlN6dklxbVpUZlpPMEExeSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NzM6Imh0dHA6Ly9sb2NhbGhvc3Q6NjA4MC9JLkpldHN0cmVhbS9wdWJsaWMvcHJvZHVjdF9kZXRhaWxzL3NpdGUud2VibWFuaWZlc3QiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1673824245);
+('VESfzPYpn8Yw5gl4Az0LO53vqjwD7WzEjjuBrdiu', 1, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoicDBoUjc5c2o1ZGxHV0dpR2FTZnpPdUoxUjEwZksydkxub0k3aFlJViI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NjI6Imh0dHA6Ly9sb2NhbGhvc3Q6NjA4MC9JLkpldHN0cmVhbS9wdWJsaWMvYWRtaW4vYXJ0aWNsZXMvY3JlYXRlIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1673841326);
 
 -- --------------------------------------------------------
 
@@ -899,7 +959,15 @@ INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`,
 (14, 'site.paypal_url', 'Paypal Link', 'https://www.paypal.com/tw/home', NULL, 'text', 11, 'Site'),
 (18, 'site.copyright_icon', 'Copyright icon', '<i class=\"fa-solid fa-palette\"></i>', NULL, 'code_editor', 12, 'Site'),
 (19, 'site.producer', '製作人', 'Jessie', NULL, 'text', 13, 'Site'),
-(20, 'site.producer_url', '製作人網頁', 'https://www.facebook.com/cc407cc.jessie', NULL, 'text', 14, 'Site');
+(20, 'site.producer_url', '製作人網頁', 'https://www.facebook.com/cc407cc.jessie', NULL, 'text', 14, 'Site'),
+(21, 'site.contact_country', '公司聯絡地址-國家', '台灣', NULL, 'text', 15, 'Site'),
+(22, 'site.contact_zipcode', '公司聯絡地址-郵政區號', '100', NULL, 'text', 16, 'Site'),
+(24, 'site.contact_city', '公司聯絡地址-縣市', '台北市', NULL, 'text', 17, 'Site'),
+(25, 'site.contact_area', '公司聯絡地址-鄉政市區', '中正區', NULL, 'text', 18, 'Site'),
+(26, 'site.contact_addr', '公司聯絡地址-地址', '100台北市中正區重慶南路一段122號', NULL, 'text', 19, 'Site'),
+(27, 'site.contact_phone', '公司聯絡電話', '(02)23322212', NULL, 'text', 20, 'Site'),
+(28, 'site.contact_time', '公司營業時間', '星期一到五 9:00 - 17:00', NULL, 'text', 21, 'Site'),
+(29, 'site.contact_email', '公司聯絡電子信箱', 'support@gmail.com', NULL, 'text', 22, 'Site');
 
 -- --------------------------------------------------------
 
@@ -1240,7 +1308,7 @@ ALTER TABLE `articles`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `cgies`
 --
 ALTER TABLE `cgies`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `comments`
@@ -1258,13 +1326,13 @@ ALTER TABLE `contacts`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `data_types`
 --
 ALTER TABLE `data_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `elements`
@@ -1300,7 +1368,7 @@ ALTER TABLE `menus`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `migrations`
@@ -1324,7 +1392,7 @@ ALTER TABLE `order_item`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `personal_access_tokens`
@@ -1342,7 +1410,7 @@ ALTER TABLE `roles`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `settings`
 --
 ALTER TABLE `settings`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `tags`
