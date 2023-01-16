@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{asset('css/slick.css')}}">
     <link rel="stylesheet" href="{{asset('css/nice-select.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+   <link rel="stylesheet" href="{{asset('fontawesome-free-6.2.1-web\css\all.min.css')}}">
    @yield('css')
 </head>
 
@@ -36,7 +37,7 @@
             </div>
         </div>
     </div>
-    <!-- Preloader Start -->
+    <!-- Preloader end -->
     <header>
         <!-- Header Start -->
         <div class="header-area">
@@ -45,12 +46,13 @@
                     <div class="menu-wrapper">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="{{url('/')}}"><img src="{{asset('img/logo/logo.png')}}" alt=""></a>
+                            <a href="{{url('/')}}"><img src="{{Voyager::image(setting('site.logo'))}}" alt=""></a>
                         </div>
                         <!-- Main-menu -->
                         <div class="main-menu d-none d-lg-block">
                             <nav>
-                                <ul id="navigation">
+                              {{menu('header','menu.header')}}
+                                {{-- <ul id="navigation">
                                     <li><a href="{{url('/')}}">Home</a></li>
                                     <li><a href="{{url('/shop')}}">shop</a></li>
                                     <li><a href="{{url('/about')}}">about</a></li>
@@ -76,7 +78,7 @@
                                         </ul>
                                     </li>
                                     <li><a href="{{url('/contact')}}">Contact</a></li>
-                                </ul>
+                                </ul> --}}
                             </nav>
                         </div>
                         <!-- Header Right -->
@@ -115,17 +117,18 @@
                             <div class="single-footer-caption mb-30">
                                 <!-- logo -->
                                 <div class="footer-logo">
-                                    <a href="{{url('/index')}}"><img src="{{asset('img/logo/logo2_footer.png')}}" alt=""></a>
+                                    <a href="{{url('/index')}}"><img src="{{Voyager::image(setting('site.logo'))}}" alt=""></a>
                                 </div>
                                 <div class="footer-tittle">
                                     <div class="footer-pera">
-                                        <p>Asorem ipsum adipolor sdit amet, consectetur adipisicing elitcf sed do eiusmod tem.</p>
+                                        <p>{{setting('site.description')}}</p>
                                 </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-2 col-lg-3 col-md-3 col-sm-5">
+                   {{ menu('footer',"menu.footer")}}
+                    {{-- <div class="col-xl-2 col-lg-3 col-md-3 col-sm-5">
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
                                 <h4>Quick Links</h4>
@@ -163,14 +166,14 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <!-- Footer bottom -->
                 <div class="row align-items-center">
                     <div class="col-xl-7 col-lg-8 col-md-7">
                         <div class="footer-copy-right">
                             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> {{__('All rights reserved | This template is made with by')}}{!!setting('site.copyright_icon')!!} <a href="{{setting('site.producer_url')}}" target="_blank">{{setting('site.producer')}}</a>
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                         </div>
                     </div>
@@ -178,10 +181,10 @@
                         <div class="footer-copy-right f-right">
                             <!-- social -->
                             <div class="footer-social">
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="https://www.facebook.com/sai4ull"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#"><i class="fab fa-behance"></i></a>
-                                <a href="#"><i class="fas fa-globe"></i></a>
+                                <a href="{{setting('site.Tw_url')}}"><i class="fab fa-twitter"></i></a>
+                                <a href="{{setting('site.fb_url')}}"><i class="fab fa-facebook-f"></i></a>
+                                <a href="{{setting('site.ig_url')}}"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="{{setting('site.paypal_url')}}"><i class="fa-brands fa-paypal"></i></i></a>
                             </div>
                         </div>
                     </div>

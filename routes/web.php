@@ -40,7 +40,7 @@ Route::namespace ('App\Http\controllers')->group(function () {
     Route::get('/confirmation', 'SiteController@confirmation');
     Route::get('/contact', 'SiteController@contact');
     Route::get('/elements', 'SiteController@elements');
-    Route::get('/product_details', 'SiteController@product_details');
+    Route::get('/product_details/{item}', 'SiteController@product_details');
     Route::get('/product_list', 'SiteController@product_list');
     Route::get('/shop', 'SiteController@shop');
 
