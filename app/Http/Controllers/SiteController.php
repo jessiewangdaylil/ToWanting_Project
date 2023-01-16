@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cgy;
+use App\Models\Contact;
 use App\Models\Element;
 use App\Models\Item;
+use Illuminate\Support\Facades\Request;
 
 class SiteController extends Controller
 {
@@ -68,6 +70,20 @@ class SiteController extends Controller
     {
         return view('blog_details');
     }
+    public function contact()
+    {
+        return view('contact');
+    }
+    public function storeContact(Request $request)
+    {
+        $contact = Contact::create($request->only('name', 'email', 'subject', 'message'));
+        if ($contact) {
+            print("儲存成功");
+        } else {
+            print("儲存失敗");
+        }
+        return redirect('/admin/contacts');
+    }
     public function about()
     {
         return view('about');
@@ -85,10 +101,7 @@ class SiteController extends Controller
     {
         return view('confirmation');
     }
-    public function contact()
-    {
-        return view('contact');
-    }
+
     public function elements()
     {
         return view('elements');
