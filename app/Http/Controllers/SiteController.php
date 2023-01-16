@@ -78,8 +78,12 @@ class SiteController extends Controller
         $contact = Contact::create($request->only('name', 'email', 'subject', 'message', 'mobile'));
         if ($contact) {
             print("儲存成功");
+            flash('表單送出成功!!')->overlay();
+            // flash('表單送出成功!!')->success(); //綠色框
         } else {
             print("儲存失敗");
+            flash('表單送出失敗!!')->overlay();
+            // flash('表單送出失敗!!')->error(); //紅色框
         }
         return redirect('/contact');
     }

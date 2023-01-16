@@ -17,6 +17,7 @@
         </div>
         <!--? Hero Area End-->
         <!-- ================ contact section start ================= -->
+        @include('flash::message')
         <section class="contact-section">
             <div class="container">
                 <div class="d-none d-sm-block mb-5 pb-4">
@@ -71,7 +72,7 @@
                             <div class="row">
                                <div class="col-12">
                                     <div class="form-group">
-                                        <input class="form-control" name="subject" id="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'" placeholder="Enter Subject">
+                                        <input class="form-control" name="subject" id="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'" placeholder="輸入主旨">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
