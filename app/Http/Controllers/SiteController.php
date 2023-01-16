@@ -8,7 +8,7 @@ use App\Models\Contact;
 use App\Models\Element;
 use App\Models\Item;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {
@@ -75,13 +75,13 @@ class SiteController extends Controller
     }
     public function storeContact(Request $request)
     {
-        $contact = Contact::create($request->only('name', 'email', 'subject', 'message'));
+        $contact = Contact::create($request->only('name', 'email', 'subject', 'message', 'mobile'));
         if ($contact) {
             print("儲存成功");
         } else {
             print("儲存失敗");
         }
-        return redirect('/admin/contacts');
+        return redirect('/contact');
     }
     public function about()
     {
