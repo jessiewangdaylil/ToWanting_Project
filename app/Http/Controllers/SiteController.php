@@ -87,6 +87,15 @@ class SiteController extends Controller
         }
         return redirect('/contact');
     }
+    public function contact2()
+    {
+        return view('contact2');
+    }
+    public function storeContactTest(Request $request)
+    {
+        dd($request);
+        return redirect('/contact2');
+    }
     public function about()
     {
         return view('about');
