@@ -14,6 +14,7 @@ class CreateItemTag extends Migration
     public function up()
     {
         Schema::create('item_tag', function (Blueprint $table) {
+            $table->id();
             $table->bigInteger('item_id')->unsigned()->index();
             $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
             $table->bigInteger('tag_id')->unsigned()->index();

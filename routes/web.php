@@ -33,7 +33,7 @@ Route::group(['prefix' => 'admin'], function () {
 Route::namespace ('App\Http\controllers')->group(function () {
     Route::get('/index', 'SiteController@index');
     Route::get('/about', 'SiteController@about');
-    Route::get('/blog_details', 'SiteController@blog_details');
+    Route::get('/blog_details/{id}', 'SiteController@blog_details');
     Route::get('/blog/{cgies?}', 'SiteController@blog');
     Route::get('/cart', 'SiteController@cart');
     Route::get('/checkout', 'SiteController@checkout');

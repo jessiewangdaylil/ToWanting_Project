@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\ArticleTag;
 use App\Models\Cgy;
 use App\Models\Contact;
 use App\Models\Element;
 use App\Models\Item;
+use App\Models\Tag;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -100,8 +102,7 @@ class SiteController extends Controller
     {
         return view('about');
     }
-
-    public function blog(Cgy $cgies, Article $ariticle)
+    public function blogSidebar(Cgy $cgies, Article $ariticle)
     {
         $all_art_cgies = Article::where('status', 'online')->get();
 
@@ -127,7 +128,7 @@ class SiteController extends Controller
         }
 //有分類文章
 //Rightside menu
-        $art_cgy_title = ['時事', '旅遊', '美食', '運動/休閒', '寵物', '科技'];
+        $art_cgy_title = ['時事', '旅遊', '美食', '運動/休閒', '興趣', '寵物', '關係', '科技'];
         $index = 0;
         foreach ($art_cgy_title as $key) {
             $art_cgies[$index] = Cgy::where('title', $key)->first();
@@ -135,12 +136,31 @@ class SiteController extends Controller
             $index++;
         }
         $all_art_cgy = Cgy::where('title', '所有文章')->first();
-        return view('blog', compact('cgy', 'art_cgy', 'art_cgies', 'art_qty', 'all_art_cgy', 'all_art_cgies'));
 //Rightside menu
+        return compact('cgy', 'art_cgy', 'art_cgies', 'art_qty', 'all_art_cgy', 'all_art_cgies', 'cgies');
     }
-    public function blog_details()
+
+    public function blog(Cgy $cgies, Article $ariticle)
     {
-        return view('blog_details');
+        return view('blog', $this->blogSidebar($cgies, $ariticle));
+    }
+    public function blog_details(Cgy $cgies, Article $ariticle, $id, ArticleTag $articleTag)
+    {
+        $article_det = Article::find($id);
+        $article_tags = ArticleTag::where('article_id', $id)->get();
+        $loop = 0;
+        foreach ($article_tags as $article_tag) {
+            $tags[$loop] = Tag::find($article_tag->tag_id);
+            $loop++;
+        }
+
+        return view('blog_details', $this->blogSidebar($cgies, $ariticle))->with(['pic' => $article_det->getFirstPic(), 'title' => $article_det->title,
+            'content' => $article_det->content,
+            'tags' => $tags]);
+    }
+    public function cart()
+    {
+        return view('cart');
     }
     public function checkout()
     {
