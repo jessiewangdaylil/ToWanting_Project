@@ -15,7 +15,7 @@
                </div>
             </div>
       </div>
-
+@include('flash::message')
       <!--================Blog Area =================-->
       <section class="blog_area single-post-area section-padding">
          <div class="container">
@@ -34,23 +34,23 @@
                             {{$tag->title}}
                           @endforeach
                           </a></li>
-                           <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                           <li><a href="#"><i class="fa fa-comments"></i> {{count($comments)}} {{__('Comments')}}</a></li>
                         </ul>
                         <p class="excert">
                            {!!$content!!}
                         </p>
-                        <div class="quote-wrapper">
+                        {{-- <div class="quote-wrapper">
                            <div class="quotes">
                               MCSE boot camps have its supporters and its detractors. Some people do not understand why you
                               should have to spend money on boot camp when you can get the MCSE study materials yourself at
                               a fraction of the camp price. However, who has the willpower to actually sit through a
                               self-imposed MCSE training.
-                           </div>
+                           </div> --}}
                         </div>
-
                      </div>
                   </div>
-                  <div class="navigation-top">
+@include('includes._blog_sidebar')
+                  <div class="navigation-top col-8">
                      <div class="d-sm-flex justify-content-between text-center">
                         <p class="like-info"><span class="align-middle"><i class="fa fa-heart"></i></span> Lily and 4
                            people like this</p>
@@ -58,13 +58,14 @@
                            <!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
                         </div>
                         <ul class="social-icons">
-                           <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                           <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                           <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
-                           <li><a href="#"><i class="fab fa-behance"></i></a></li>
+                           <li><a href="{{setting('site.Tw_url')}}"><i class="fab fa-twitter"></i></a></li>
+                           <li><a href="{{setting('site.fb_url')}}"><i class="fab fa-facebook-f"></i></a></li>
+                           <li><a href="{{setting('site.ig_url')}}"><i class="fa-brands fa-instagram"></i></a></li>
+                           <li><a href="{{setting('site.paypal_url')}}"><i class="fa-brands fa-paypal"></i></i></a></li>
                         </ul>
                      </div>
-                     <div class="navigation-area">
+
+                     <div class="navigation-area col-12">
                         <div class="row">
                            <div
                               class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
@@ -79,7 +80,7 @@
                                  </a>
                               </div>
                               <div class="detials">
-                                 <p>Prev Post</p>
+                                 <p>{{__('Prev Post')}}</p>
                                  <a href="#">
                                     <h4>Space The Final Frontier</h4>
                                  </a>
@@ -88,7 +89,7 @@
                            <div
                               class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
                               <div class="detials">
-                                 <p>Next Post</p>
+                                 <p>{{__('Next Post')}}</p>
                                  <a href="#">
                                     <h4>Telescopes 101</h4>
                                  </a>
@@ -107,109 +108,54 @@
                         </div>
                      </div>
                   </div>
-                  <div class="blog-author">
+                  <div class="blog-author col-8">
                      <div class="media align-items-center">
-                        <img src="{{asset('img/blog/author.png')}}" alt="">
+                        <img src="{{Voyager::image($author->pic)}}" alt="">
                         <div class="media-body">
                            <a href="#">
-                              <h4>Harvard milan</h4>
+                              <h4>{{$author->name}}</h4>
                            </a>
-                           <p>Second divided from form fish beast made. Every of seas all gathered use saying you're, he
-                              our dominion twon Second divided from</p>
+                           <p>{{$author->desc}}</p>
                         </div>
                      </div>
                   </div>
-                  <div class="comments-area">
-                     <h4>05 Comments</h4>
-                     <div class="comment-list">
-                        <div class="single-comment justify-content-between d-flex">
+                  <div class="comments-area col-12">
+                     <h4>{{count($comments)}} {{__('Comments')}}</h4>
+                     @foreach ($comments as $comment)
+                  <div class="comment-list">
+                        <div class="single-comment justify-content-between d-flex ">
                            <div class="user justify-content-between d-flex">
                               <div class="thumb">
-                                 <img src="{{asset('img/comment/comment_1.png')}}" alt="">
+                                 <img src="{{Voyager::image($users[$loop->index]->pic)}}" alt="">
                               </div>
                               <div class="desc">
                                  <p class="comment">
-                                    Multiply sea night grass fourth day sea lesser rule open subdue female fill which them
-                                    Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser
+                                   {{$comment->content}}
                                  </p>
                                  <div class="d-flex justify-content-between">
                                     <div class="d-flex align-items-center">
                                        <h5>
-                                          <a href="#">Emilly Blunt</a>
+                                          <a href="{{$users[$loop->index]->socialLinks}}">{{$users[$loop->index]->name}}</a>
                                        </h5>
-                                       <p class="date">December 4, 2017 at 3:12 pm </p>
+                                       <p class="date">{{$comment->created_at}} </p>
                                     </div>
                                     <div class="reply-btn">
-                                       <a href="#" class="btn-reply text-uppercase">reply</a>
+                                       <a href="#" class="btn-reply text-uppercase">{{__('reply')}}</a>
                                     </div>
                                  </div>
                               </div>
                            </div>
                         </div>
                      </div>
-                     <div class="comment-list">
-                        <div class="single-comment justify-content-between d-flex">
-                           <div class="user justify-content-between d-flex">
-                              <div class="thumb">
-                                 <img src="{{asset('img/comment/comment_2.png')}}" alt="">
-                              </div>
-                              <div class="desc">
-                                 <p class="comment">
-                                    Multiply sea night grass fourth day sea lesser rule open subdue female fill which them
-                                    Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser
-                                 </p>
-                                 <div class="d-flex justify-content-between">
-                                    <div class="d-flex align-items-center">
-                                       <h5>
-                                          <a href="#">Emilly Blunt</a>
-                                       </h5>
-                                       <p class="date">December 4, 2017 at 3:12 pm </p>
-                                    </div>
-                                    <div class="reply-btn">
-                                       <a href="#" class="btn-reply text-uppercase">reply</a>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="comment-list">
-                        <div class="single-comment justify-content-between d-flex">
-                           <div class="user justify-content-between d-flex">
-                              <div class="thumb">
-                                 <img src="{{asset('img/comment/comment_3.png')}}" alt="">
-                              </div>
-                              <div class="desc">
-                                 <p class="comment">
-                                    Multiply sea night grass fourth day sea lesser rule open subdue female fill which them
-                                    Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser
-                                 </p>
-                                 <div class="d-flex justify-content-between">
-                                    <div class="d-flex align-items-center">
-                                       <h5>
-                                          <a href="#">Emilly Blunt</a>
-                                       </h5>
-                                       <p class="date">December 4, 2017 at 3:12 pm </p>
-                                    </div>
-                                    <div class="reply-btn">
-                                       <a href="#" class="btn-reply text-uppercase">reply</a>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
+                     @endforeach
+
+
                   </div>
                   <div class="comment-form">
-                     <h4>Leave a Reply</h4>
-                     <form class="form-contact comment_form" action="#" id="commentForm">
+                     <h4>{{__('Leave a Reply')}}</h4>
+                     <form class="form-contact comment_form" action="{{url('commentstored')}}" method="post" id="">
+                      @csrf
                         <div class="row">
-                           <div class="col-12">
-                              <div class="form-group">
-                                 <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
-                                    placeholder="Write Comment"></textarea>
-                              </div>
-                           </div>
                            <div class="col-sm-6">
                               <div class="form-group">
                                  <input class="form-control" name="name" id="name" type="text" placeholder="Name">
@@ -222,17 +168,17 @@
                            </div>
                            <div class="col-12">
                               <div class="form-group">
-                                 <input class="form-control" name="website" id="website" type="text" placeholder="Website">
+                                 <textarea class="form-control w-100" name="content" id="content" cols="30" rows="9"
+                                    placeholder="Write Comment"></textarea>
                               </div>
                            </div>
                         </div>
                         <div class="form-group">
-                           <button type="submit" class="button button-contactForm btn_1 boxed-btn">Send Message</button>
+                           <button type="submit" class="button button-contactForm btn_1 boxed-btn">{{__('Send Message')}}</button>
                         </div>
                      </form>
                   </div>
                </div>
-              @include('includes._blog_sidebar')
             </div>
          </div>
       </section>

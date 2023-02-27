@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\ArticleTag;
 use App\Models\Cgy;
+use App\Models\Comment;
 use App\Models\Contact;
 use App\Models\Element;
 use App\Models\Item;
 use App\Models\Tag;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SiteController extends Controller
 {
@@ -144,20 +147,54 @@ class SiteController extends Controller
     {
         return view('blog', $this->blogSidebar($cgies, $ariticle));
     }
-    public function blog_details(Cgy $cgies, Article $ariticle, $id, ArticleTag $articleTag)
+    public function blog_details(Cgy $cgies, $id, Article $article, User $user)
     {
+//Session  目前登入使用者、目標瀏覽文章
+        session(['article_id' => $id, 'user_id' => Auth::id()]);
+//目標瀏覽文章、作者
         $article_det = Article::find($id);
+        $author = User::find($article_det->author_id);
+//此文章的所有標籤
         $article_tags = ArticleTag::where('article_id', $id)->get();
         $loop = 0;
         foreach ($article_tags as $article_tag) {
             $tags[$loop] = Tag::find($article_tag->tag_id);
             $loop++;
         }
-
-        return view('blog_details', $this->blogSidebar($cgies, $ariticle))->with(['pic' => $article_det->getFirstPic(), 'title' => $article_det->title,
+//
+        $article_coms = Comment::where('article_id', $id)->where('enabled', true)->orderBy('created_at', 'asc')->get();
+        $loop = 0;
+        foreach ($article_coms as $comment) {
+            $users[$loop] = User::find($comment->user_id);
+            $loop++;
+        }
+//
+        return view('blog_details', $this->blogSidebar($cgies, $article))->with(['pic' => $article_det->getFirstPic(), 'title' => $article_det->title,
             'content' => $article_det->content,
-            'tags' => $tags]);
+            'tags' => $tags, 'comments' => $article_coms, 'users' => $users, 'author' => $author]);
     }
+
+    public function StoreComment(Request $request)
+    {
+        //dd(session('user_id', 2));
+        $comment = Comment::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'content' => $request->content,
+            'article_id' => session('article_id', 20),
+            'user_id' => session('user_id', 2)]);
+        if ($comment) {
+            print("儲存成功");
+            flash('表單送出成功!!')->overlay();
+            // flash('表單送出成功!!')->success(); //綠色框
+        } else {
+            print("儲存失敗");
+            flash('表單送出失敗!!')->overlay();
+            // flash('表單送出失敗!!')->error(); //紅色框
+        }
+        return redirect(url('/blog_details', session('article_id', 2)));
+    }
+
     public function cart()
     {
         return view('cart');

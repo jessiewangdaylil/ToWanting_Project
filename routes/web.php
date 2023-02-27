@@ -35,13 +35,14 @@ Route::namespace ('App\Http\controllers')->group(function () {
     Route::get('/about', 'SiteController@about');
     Route::get('/blog_details/{id}', 'SiteController@blog_details');
     Route::get('/blog/{cgies?}', 'SiteController@blog');
+    Route::post('/commentstored', 'SiteController@StoreComment');
     Route::get('/cart', 'SiteController@cart');
     Route::get('/checkout', 'SiteController@checkout');
     Route::get('/confirmation', 'SiteController@confirmation');
     Route::get('/contact', 'SiteController@contact');
     Route::post('/contactstored', 'SiteController@storeContact');
-    Route::get('/contact2', 'SiteController@contact2');
-    Route::post('/contactstored2', 'SiteController@storeContactTest');
+    Route::get('/contact2', 'SiteController@contact2'); //表單元素集測試
+    Route::post('/contactstored2', 'SiteController@storeContactTest'); //表單元素集測試
 
     Route::get('/elements', 'SiteController@elements');
     Route::get('/product_details/{item}', 'SiteController@product_details');

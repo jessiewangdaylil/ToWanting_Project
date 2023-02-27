@@ -33,7 +33,7 @@
                                 </div>
 
                                 <div class="blog_details">
-                                    <a class="d-inline-block" href="single-blog.html">
+                                    <a class="d-inline-block" href="{{url("/blog_details/$article->id")}}">
                                         <h2>{{$article->title}}</h2>
                                     </a>
                                     <p>{{$article->content_small}}</p>
