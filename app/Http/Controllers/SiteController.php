@@ -20,11 +20,15 @@ class SiteController extends Controller
 //===============================================================
     public function index()
     {
+// (1) silder
         $sliders = Element::where('page', 'index')->where('position', 'slider')->orderBy('sort', 'asc')->get();
-        $arrivals = Item::where('cgy_id', 1)->orderBy('sort', 'asc')->get();
-        $title = Element::where('mode', 'image')->where('page', 'index')->where('position', 'slider')->orderBy('sort', 'asc')->first();
+// (2) Introduction
         $introductions = Element::where('page', 'index')->where('position', 'introduction')->orderBy('sort', 'asc')->get();
-        return view('index', compact('sliders', 'arrivals', 'title', 'introductions'));
+//(3) Video
+//(4) Item Arrival
+        $arrivals = Item::where('cgy_id', 1)->orderBy('sort', 'asc')->get();
+//(5) Popular Article
+        return view('index', compact('sliders', 'arrivals', 'introductions'));
     }
 //==============================================================
     public function shop()

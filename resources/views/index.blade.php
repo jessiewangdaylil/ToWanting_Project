@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title','首頁')
 @section('content')
-        <!--? slider Area Start -->
+        <!--?(1) slider Area Start -->
         <div class="slider-area ">
             <div class="slider-active">
                 <!-- Single Slider -->
@@ -30,9 +30,9 @@
                 @endforeach
             </div>
         </div>
-        <!-- slider Area End-->
+        <!--(1) slider Area End-->
 
-          <!--? Introduction  Start-->
+          <!--?(2) Introduction  Start-->
         <div class="Introduction section-padding30">
             <div class="container">
               @foreach ($introductions as $introduction)
@@ -70,39 +70,28 @@
               @endforeach
             </div>
         </div>
-        <!-- Introduction  End-->
-        <!--? Shop Method Start-->
-        <div class="shop-method-area">
-            <div class="container">
-                <div class="method-wrapper">
-                    <div class="row d-flex justify-content-between">
-                        <div class="col-xl-4 col-lg-4 col-md-6">
-                            <div class="single-method mb-40">
-                                <i class="ti-package"></i>
-                                <h6>Free Shipping Method</h6>
-                                <p>aorem ixpsacdolor sit ameasecur adipisicing elitsf edasd.</p>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-4 col-md-6">
-                            <div class="single-method mb-40">
-                                <i class="ti-unlock"></i>
-                                <h6>Secure Payment System</h6>
-                                <p>aorem ixpsacdolor sit ameasecur adipisicing elitsf edasd.</p>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-4 col-md-6">
-                            <div class="single-method mb-40">
-                                <i class="ti-reload"></i>
-                                <h6>Secure Payment System</h6>
-                                <p>aorem ixpsacdolor sit ameasecur adipisicing elitsf edasd.</p>
-                            </div>
-                        </div>
+        <!--(2) Introduction  End-->
+        <!--?(3) Video Area Start -->
+        <div class="video-area">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                    <div class="video-wrap">
+                        <div class="play-btn "><a class="popup-video" href="https://www.youtube.com/watch?v=KMc6DyEJp04"><i class="fas fa-play"></i></a></div>
+                    </div>
+                    </div>
+                </div>
+                <!-- Arrow -->
+                <div class="thumb-content-box">
+                    <div class="thumb-content">
+                        <h3>Next Video</h3>
+                        <a href="#"> <i class="flaticon-arrow"></i></a>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Shop Method End-->
-        <!-- ? New Product Start -->
+        <!--(3) Video Area End -->
+        <!--?(4) Item Arrival Start -->
         <section class="new-product-area section-padding30">
             <div class="container">
                 <!-- Section tittle -->
@@ -150,41 +139,8 @@
                 </div>
             </div>
         </section>
-        <!--  New Product End -->
-        <!--? Gallery Area Start -->
-        <div class="gallery-area">
-            <div class="container-fluid p-0 fix">
-                <div class="row">
-                    <div class="col-xl-6 col-lg-4 col-md-6 col-sm-6">
-                        <div class="single-gallery mb-30">
-                            <div class="gallery-img big-img" style="background-image: url(assets/img/gallery/gallery1.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                        <div class="single-gallery mb-30">
-                            <div class="gallery-img big-img" style="background-image: url(assets/img/gallery/gallery2.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-12">
-                        <div class="row">
-                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-6">
-                                <div class="single-gallery mb-30">
-                                    <div class="gallery-img small-img" style="background-image: url(assets/img/gallery/gallery3.png);"></div>
-                                </div>
-                            </div>
-                            <div class="col-xl-12 col-lg-12  col-md-6 col-sm-6">
-                                <div class="single-gallery mb-30">
-                                    <div class="gallery-img small-img" style="background-image: url(assets/img/gallery/gallery4.png);"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <!-- Gallery Area End -->
-        <!--? Popular Items Start -->
+        <!--(4)  Item Arrival End -->
+       <!--?(5) Popular Article Start -->
         <div class="popular-items section-padding30">
             <div class="container">
                 <!-- Section tittle -->
@@ -308,27 +264,6 @@
                 </div>
             </div>
         </div>
-        <!-- Popular Items End -->
-        <!--? Video Area Start -->
-        <div class="video-area">
-            <div class="container-fluid">
-                <div class="row align-items-center">
-                    <div class="col-lg-12">
-                    <div class="video-wrap">
-                        <div class="play-btn "><a class="popup-video" href="https://www.youtube.com/watch?v=KMc6DyEJp04"><i class="fas fa-play"></i></a></div>
-                    </div>
-                    </div>
-                </div>
-                <!-- Arrow -->
-                <div class="thumb-content-box">
-                    <div class="thumb-content">
-                        <h3>Next Video</h3>
-                        <a href="#"> <i class="flaticon-arrow"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Video Area End -->
-
+        <!--(5) Popular Article End -->
 
  @endsection
