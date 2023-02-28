@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col-lg-8 mb-5 mb-lg-0">
                         <div class="blog_left_sidebar">
-                        @foreach ($art_cgy as $article)
+                        @foreach ($articles as $article)
                            <article class="blog_item">
                                 <div class="blog_item_img">
                                     <img class="card-img rounded-0" src="{{Voyager::image($article->getFirstPic())}}" alt="">
@@ -44,7 +44,7 @@
                                 </div>
                             </article>
                             @endforeach
-                          {{$art_cgy->links()}}
+                          {{$articles->links()}}
 
 
                             {{-- <nav class="blog-pagination justify-content-center d-flex">

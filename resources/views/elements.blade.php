@@ -1,4 +1,7 @@
-		<!-- Hero Area Start-->
+		@extends('layouts.master')
+@section('title','首頁')
+@section('content')
+<!-- Hero Area Start-->
 		<div class="slider-area ">
 			<div class="single-slider slider-height2 d-flex align-items-center">
 				<div class="container">

@@ -18,16 +18,21 @@ use Illuminate\Support\Facades\Auth;
 class SiteController extends Controller
 {
 //===============================================================
+    public function about()
+    {
+        return view('about');
+    }
+//===============================================================
     public function index()
     {
 // (1) silder
         $sliders = Element::where('page', 'index')->where('position', 'slider')->orderBy('sort', 'asc')->get();
 // (2) Introduction
         $introductions = Element::where('page', 'index')->where('position', 'introduction')->orderBy('sort', 'asc')->get();
-//(3) Video
-//(4) Item Arrival
+// (3) Video
+// (4) Item Arrival
         $arrivals = Item::where('cgy_id', 1)->orderBy('sort', 'asc')->get();
-//(5) Popular Article
+// (5) Popular Article
         return view('index', compact('sliders', 'arrivals', 'introductions'));
     }
 //==============================================================
@@ -80,84 +85,51 @@ class SiteController extends Controller
         return view('product_details', compact('item'));
     }
 //===============================================================
-    public function contact()
-    {
-        return view('contact');
-    }
-//===============================================================
-    public function storeContact(Request $request)
-    {
-        $contact = Contact::create($request->only('name', 'email', 'subject', 'message', 'mobile'));
-        if ($contact) {
-            print("儲存成功");
-            flash('表單送出成功!!')->overlay();
-            // flash('表單送出成功!!')->success(); //綠色框
-        } else {
-            print("儲存失敗");
-            flash('表單送出失敗!!')->overlay();
-            // flash('表單送出失敗!!')->error(); //紅色框
-        }
-        return redirect('/contact');
-    }
-//===============================================================
-    public function contact2()
-    {
-        return view('contact2');
-    }
-//===============================================================
-    public function storeContactTest(Request $request)
-    {
-        dd($request);
-        return redirect('/contact2');
-    }
-//===============================================================
-    public function about()
-    {
-        return view('about');
-    }
-//===============================================================
-
     public function blogSidebar(Cgy $cgies, Article $ariticle)
     {
-        $all_art_cgies = Article::where('status', 'online')->get();
+//文章分類
+        $newCgy = Cgy::where('title', '最新文章')->first();
+        $artCgy = Cgy::where('title', '部落格文章')->first();
+        $allCgy = Cgy::where('title', '所有文章')->first();
+//所有上線文章 online article => onArt
+        $onArt = Article::where('status', 'online')->get();
+//當週最新文章 'New Articles NewOnArt
 
+        $newOnArt = Article::where('status', 'online')->where('updated_at', '>', Carbon::now()->subWeekday())->orderBy('sort', 'desc')->paginate(5);
+
+//開始-路由判斷 /blog/{cgies?}
         if (!(is_null($cgies->id))) {
-
+            //所有文章
             if ($cgies->title == '所有文章') {
-//所有文章
                 $cgy = $cgies;
-                $art_cgy = Article::where('status', 'online')->paginate(5);
-//所有文章
-
+                $articles = Article::where('status', 'online')->paginate(5);
             } else {
-//分類文章
+                //分類文章
                 $cgy = Cgy::where('id', $cgies->id)->first();
-                $art_cgy = $cgy->articles()->where('status', 'online')->paginate(5);
-//有分類文章
+                $articles = $cgy->articles()->where('status', 'online')->paginate(5);
             }
         } else {
-//當週最新文章
-            $cgy = Cgy::where('title', '最新文章')->first();
-            $art_cgy = Article::where('status', 'online')->where('updated_at', '>', Carbon::now()->subWeekday())->orderBy('sort', 'desc')->paginate(5);
-            // dd($art_cgy);
+            //當週最新文章 /blog
+            $cgy = $newCgy;
+            $articles = $newOnArt;
         }
-//有分類文章
-//Rightside menu
-        $art_cgy_title = ['時事', '旅遊', '美食', '運動/休閒', '興趣', '寵物', '關係', '科技'];
+//結束-路由判斷 /blog/{cgies?}
+//開始-blogSidebar menu
+        $artCgies = Cgy::where('parent_id', $artCgy->id)->where('parent_id', $artCgy->id)->where('id', '!=', $allCgy->id)->where('id', '!=', $newCgy->id)->orderby('sort', 'asc')->select(['id', 'title'])->get();
+
         $index = 0;
-        foreach ($art_cgy_title as $key) {
-            $art_cgies[$index] = Cgy::where('title', $key)->first();
-            $art_qty[$index] = count(Article::where('cgy_id', $art_cgies[$index]->id)->where('status', 'online')->get());
+        foreach ($artCgies as $key) {
+            $artQty[$index] = count(Article::where('cgy_id', $key->id)->where('status', 'online')->get());
             $index++;
         }
-        $all_art_cgy = Cgy::where('title', '所有文章')->first();
-//Rightside menu
-        return compact('cgy', 'art_cgy', 'art_cgies', 'art_qty', 'all_art_cgy', 'all_art_cgies', 'cgies');
+//結束-blogSidebar menu
+        return compact('cgy', 'articles', 'artQty', 'artCgies', 'onArt', 'newOnArt', 'cgies', 'allCgy');
     }
 //===============================================================
-    public function blog(Cgy $cgies, Article $ariticle)
+    public function blog(Cgy $cgies, Article $ariticle, )
     {
-        return view('blog', $this->blogSidebar($cgies, $ariticle));
+
+        return view('blog', $this->blogSidebar($cgies, $ariticle))->with([]);
     }
 //===============================================================
     public function blog_details(Cgy $cgies, $id, Article $article, User $user)
@@ -206,6 +178,37 @@ class SiteController extends Controller
             // flash('表單送出失敗!!')->error(); //紅色框
         }
         return redirect(url('/blog_details', session('article_id', 2)));
+    }
+//===============================================================
+    public function contact()
+    {
+        return view('contact');
+    }
+//===============================================================
+    public function storeContact(Request $request)
+    {
+        $contact = Contact::create($request->only('name', 'email', 'subject', 'message', 'mobile'));
+        if ($contact) {
+            print("儲存成功");
+            flash('表單送出成功!!')->overlay();
+            // flash('表單送出成功!!')->success(); //綠色框
+        } else {
+            print("儲存失敗");
+            flash('表單送出失敗!!')->overlay();
+            // flash('表單送出失敗!!')->error(); //紅色框
+        }
+        return redirect('/contact');
+    }
+//===============================================================
+    public function contact2()
+    {
+        return view('contact2');
+    }
+//===============================================================
+    public function storeContactTest(Request $request)
+    {
+        dd($request);
+        return redirect('/contact2');
     }
 //===============================================================
     public function cart()

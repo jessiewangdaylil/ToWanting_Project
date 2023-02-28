@@ -22,25 +22,25 @@
                                 <ul class="list cat-list">
 
                                     <li>
-                                        <a href="{{url("/blog/{$all_art_cgy->id}")}}" class="d-flex">
+                                        <a href="{{url("/blog/{$allCgy->id}")}}" class="d-flex">
                                             <p>{{__('All Articles')}}</p>
-                                            <p>({{$all_art_cgies->count()}})</p>
+                                            <p>({{$onArt->count()}})</p>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{url('/blog')}}" class="d-flex">
                                             <p>{{__('New Articles')}}</p>
-                                            <p>({{count($art_cgy)}})</p>
+                                            <p>({{count($newOnArt)}})</p>
                                         </a>
                                     </li>
-                            @foreach ($art_cgies as $cgy)
+                            @foreach ($artCgies as $cgy)
                             <li>
                                         <a href="{{url("/blog/{$cgy->id}")}}" class="d-flex">
                                             <p>{{$cgy->title}}</p>
                                    @if ($loop->index ==0)
                                        <p>(0)</p>
                                    @else
-                                        <p>({{$art_qty[$loop->index]}})</p>
+                                        <p>({{$artQty[$loop->index]}})</p>
                                    @endif
                                         </a>
                                     </li>
