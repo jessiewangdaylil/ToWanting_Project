@@ -15,7 +15,7 @@
                                         </div>
                                     </div>
                                     <div class="popular-caption">
-                                        <h3><a href="{{url('/item'.$item->id)}}">{{$item->title}}</a></h3>
+                                        <h3><a href="{{url('/product_details/'.$item->id)}}">{{$item->title}}</a></h3>
                                         <span>${{$item->price_new}}</span>
                                     </div>
                                 </div>

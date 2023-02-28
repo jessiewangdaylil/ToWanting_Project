@@ -24,8 +24,8 @@ class CreateItemsTable extends Migration
             $table->string('badge', 30)->nullable(); //小標
             $table->integer('star')->default(10); //星數，5星為10
             $table->integer('stock')->default(0); //庫存數量
-            $table->string('desc', 400)->nullable(); //商品描述
-            $table->string('chars', 300)->nullable(); //商品特色
+            $table->string('desc', 1000)->nullable(); //商品描述
+            $table->string('chars', 3000)->nullable(); //商品特色
             $table->string('sku', 100)->nullable(); //sku編號
             $table->string('options', 500)->nullable(); //可供選項
             $table->integer('sort')->default(0); //排序

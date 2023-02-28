@@ -30,12 +30,13 @@ class SiteController extends Controller
     public function shop()
     {
 // 實體商品
+
         $realOfCgy = Cgy::find(5);
-        $realCgies = Cgy::where('parent_id', 5)->get();
+        $realCgies = Cgy::where('parent_id', 5)->orWhere('id', 5)->get();
         $index = 0;
         $realProduct = [];
         foreach ($realCgies as $key) {
-            $realProdArr = Item::where('cgy_id', $key->id)->get();
+            $realProdArr = Item::where('cgy_id', $key->id)->orderby('created_at', 'desc')->get();
             if (count($realProdArr) > 1) {
                 foreach ($realProdArr as $key) {
                     $realProduct[$index] = $key;
@@ -44,7 +45,6 @@ class SiteController extends Controller
             } elseif (count($realProdArr) == 1) {
                 $realProduct[$index] = $realProdArr[0];
                 $index++;
-
             }
             $realProdArr = null;
         }
@@ -156,17 +156,17 @@ class SiteController extends Controller
         $author = User::find($article_det->author_id);
 //此文章的所有標籤
         $article_tags = ArticleTag::where('article_id', $id)->get();
-        $loop = 0;
+        $index = 0;
         foreach ($article_tags as $article_tag) {
-            $tags[$loop] = Tag::find($article_tag->tag_id);
-            $loop++;
+            $tags[$index] = Tag::find($article_tag->tag_id);
+            $index++;
         }
 //
         $article_coms = Comment::where('article_id', $id)->where('enabled', true)->orderBy('created_at', 'asc')->get();
-        $loop = 0;
+        $index = 0;
         foreach ($article_coms as $comment) {
-            $users[$loop] = User::find($comment->user_id);
-            $loop++;
+            $users[$index] = User::find($comment->user_id);
+            $index++;
         }
 //
         return view('blog_details', $this->blogSidebar($cgies, $article))->with(['pic' => $article_det->getFirstPic(), 'title' => $article_det->title,
