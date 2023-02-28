@@ -17,67 +17,70 @@ use Illuminate\Support\Facades\Auth;
 
 class SiteController extends Controller
 {
-
+//===============================================================
     public function index()
     {
         $sliders = Element::where('page', 'index')->where('position', 'slider')->orderBy('sort', 'asc')->get();
         $arrivals = Item::where('cgy_id', 1)->orderBy('sort', 'asc')->get();
         $title = Element::where('mode', 'image')->where('page', 'index')->where('position', 'slider')->orderBy('sort', 'asc')->first();
-        // $s1_background = Element::where('mode', 'image')->where('page', 'index')->where('position', 'slider')->where('title', 'background')->get();
         $introductions = Element::where('page', 'index')->where('position', 'introduction')->orderBy('sort', 'asc')->get();
         return view('index', compact('sliders', 'arrivals', 'title', 'introductions'));
     }
+//==============================================================
     public function shop()
     {
-// 實體商品
-
-        $realOfCgy = Cgy::find(5);
-        $realCgies = Cgy::where('parent_id', 5)->orWhere('id', 5)->get();
+// card(1) 實體商品 real Item => rlIm
+        $rlImCgy = Cgy::where('title', '實體商品')->first();
+        $rlImCgies = Cgy::where('parent_id', $rlImCgy->id)->orWhere('id', $rlImCgy->id)->get();
         $index = 0;
-        $realProduct = [];
-        foreach ($realCgies as $key) {
-            $realProdArr = Item::where('cgy_id', $key->id)->orderby('created_at', 'desc')->get();
-            if (count($realProdArr) > 1) {
-                foreach ($realProdArr as $key) {
-                    $realProduct[$index] = $key;
+        $rlIm = [];
+        foreach ($rlImCgies as $rlImkey) {
+            $rlImkeyItem = Item::where('cgy_id', $rlImkey->id)->orderby('created_at', 'desc')->get();
+            if (count($rlImkeyItem) > 1) {
+                foreach ($rlImkeyItem as $rlImkey) {
+                    $rlIm[$index] = $rlImkey;
                     $index++;
                 }
-            } elseif (count($realProdArr) == 1) {
-                $realProduct[$index] = $realProdArr[0];
+            } elseif (count($rlImkeyItem) == 1) {
+                $rlIm[$index] = $rlImkeyItem[0];
                 $index++;
             }
-            $realProdArr = null;
+            $rlImkeyItem = null;
         }
-// 虛擬商品
-        $virtualOfCgy = Cgy::find(6);
-        $virtualCgies = Cgy::where('parent_id', 6)->get();
+// Card(2) 虛擬商品 virtual Item => vlIm
+        $vlImCgy = Cgy::where('title', '虛擬商品')->first();
+        $vlImCgies = Cgy::where('parent_id', $vlImCgy->id)->orWhere('id', $vlImCgy->id)->get();
         $index = 0;
-        $virtualProduct = [];
-        foreach ($virtualCgies as $key) {
-            $virtualProdArr = Item::where('cgy_id', $key->id)->get();
-            if (count($virtualProdArr) > 1) {
-                foreach ($virtualProdArr as $key) {
-                    $virtualProduct[$index] = $key;
+        $vlIm = [];
+        foreach ($vlImCgies as $vlImkey) {
+            $vlImkeyItem = Item::where('cgy_id', $vlImkey->id)->get();
+            if (count($vlImkeyItem) > 1) {
+                foreach ($vlImkeyItem as $vlImkey) {
+                    $vlIm[$index] = $vlImkey;
                     $index++;
                 }
-            } elseif (count($virtualProdArr) == 1) {
-                $virtualProduct[$index] = $virtualProdArr[0];
+            } elseif (count($vlImkeyItem) == 1) {
+                $vlIm[$index] = $vlImkeyItem[0];
                 $index++;
-
             }
-            $realProdArr = null;
+            $rlImkeyItem = null;
         }
-//
-        return view('shop', compact('realOfCgy', 'realProduct', 'virtualOfCgy', 'virtualProduct'));
+// Card(3) 人氣商品 popular Item => prIm
+        $prCount = Item::where('enabled', true)->count();
+        $prIm = Item::where('enabled', true)->orderby('star', 'desc')->take($prCount / 5)->get();
+        return view('shop', compact('rlImCgy', 'rlIm', 'vlImCgy', 'vlIm', 'prIm'));
     }
+//===============================================================
     public function product_details(Item $item)
     {
         return view('product_details', compact('item'));
     }
+//===============================================================
     public function contact()
     {
         return view('contact');
     }
+//===============================================================
     public function storeContact(Request $request)
     {
         $contact = Contact::create($request->only('name', 'email', 'subject', 'message', 'mobile'));
@@ -92,19 +95,24 @@ class SiteController extends Controller
         }
         return redirect('/contact');
     }
+//===============================================================
     public function contact2()
     {
         return view('contact2');
     }
+//===============================================================
     public function storeContactTest(Request $request)
     {
         dd($request);
         return redirect('/contact2');
     }
+//===============================================================
     public function about()
     {
         return view('about');
     }
+//===============================================================
+
     public function blogSidebar(Cgy $cgies, Article $ariticle)
     {
         $all_art_cgies = Article::where('status', 'online')->get();
@@ -142,11 +150,12 @@ class SiteController extends Controller
 //Rightside menu
         return compact('cgy', 'art_cgy', 'art_cgies', 'art_qty', 'all_art_cgy', 'all_art_cgies', 'cgies');
     }
-
+//===============================================================
     public function blog(Cgy $cgies, Article $ariticle)
     {
         return view('blog', $this->blogSidebar($cgies, $ariticle));
     }
+//===============================================================
     public function blog_details(Cgy $cgies, $id, Article $article, User $user)
     {
 //Session  目前登入使用者、目標瀏覽文章
@@ -173,7 +182,7 @@ class SiteController extends Controller
             'content' => $article_det->content,
             'tags' => $tags, 'comments' => $article_coms, 'users' => $users, 'author' => $author]);
     }
-
+//===============================================================
     public function StoreComment(Request $request)
     {
         //dd(session('user_id', 2));
@@ -194,27 +203,30 @@ class SiteController extends Controller
         }
         return redirect(url('/blog_details', session('article_id', 2)));
     }
-
+//===============================================================
     public function cart()
     {
         return view('cart');
     }
+//===============================================================
     public function checkout()
     {
         return view('checkout');
     }
+//===============================================================
     public function confirmation()
     {
         return view('confirmation');
     }
-
+//===============================================================
     public function elements()
     {
         return view('elements');
     }
+//===============================================================
     public function product_list()
     {
         return view('product_list');
     }
-
+//===============================================================
 }

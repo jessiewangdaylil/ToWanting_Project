@@ -24,8 +24,8 @@
                         <!--Nav Button  -->
                         <nav>
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">{{$realOfCgy->title}}</a>
-                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"> {{$virtualOfCgy->title}}</a>
+                                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">{{$rlImCgy->title}}</a>
+                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"> {{$vlImCgy->title}}</a>
                                 <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false"> Most populer </a>
                             </div>
                         </nav>
@@ -50,22 +50,22 @@
                 </div>
                 <!-- Nav Card -->
                 <div class="tab-content" id="nav-tabContent">
-                    <!-- card one -->
+                    <!--  card(1) 實體商品 rlIm -->
                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                         <div class="row">
-                        @include('includes._itemCard',['items' => $realProduct])
+                        @include('includes._itemCard',['items' => $rlIm])
                         </div>
                     </div>
-                    <!-- Card two -->
+                    <!-- Card(2) 虛擬商品 vlIm -->
                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                         <div class="row">
-                         @include('includes._itemCard',['items' => $virtualProduct])
+                         @include('includes._itemCard',['items' => $vlIm])
                         </div>
                     </div>
-                    <!-- Card three -->
+                    <!-- Card(3)人氣商品 prIm -->
                     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                         <div class="row">
-                         @include('includes._itemCard',['items' => $virtualProduct])
+                         @include('includes._itemCard',['items' => $prIm])
                         </div>
                     </div>
                 </div>
