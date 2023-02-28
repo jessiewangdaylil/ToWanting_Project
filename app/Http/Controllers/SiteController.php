@@ -146,14 +146,16 @@ class SiteController extends Controller
             $tags[$index] = Tag::find($article_tag->tag_id);
             $index++;
         }
-//
+
+//   *******待修改 如果沒有評論要如何?
         $article_coms = Comment::where('article_id', $id)->where('enabled', true)->orderBy('created_at', 'asc')->get();
+
         $index = 0;
         foreach ($article_coms as $comment) {
             $users[$index] = User::find($comment->user_id);
             $index++;
         }
-//
+
         return view('blog_details', $this->blogSidebar($cgies, $article))->with(['pic' => $article_det->getFirstPic(), 'title' => $article_det->title,
             'content' => $article_det->content,
             'tags' => $tags, 'comments' => $article_coms, 'users' => $users, 'author' => $author]);
