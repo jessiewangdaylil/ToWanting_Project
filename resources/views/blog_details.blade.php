@@ -49,7 +49,8 @@
                         </div>
                      </div>
                   </div>
-@include('includes._blog_sidebar')
+@include('includes._blog_sidebar',['enabled'=>1])
+
                   <div class="navigation-top col-8">
                      <div class="d-sm-flex justify-content-between text-center">
                         <p class="like-info"><span class="align-middle"><i class="fa fa-heart"></i></span> Lily and 4
@@ -122,7 +123,7 @@
                   <div class="comments-area col-12">
                      <h4>{{count($comments)}} {{__('Comments')}}</h4>
                     @if (count($comments)!=0)
-                          @include('includes._comment_list',$comments);
+@include('includes._comment_list',$comments)
                     @else
                     @endif
                   </div>
@@ -133,18 +134,18 @@
                         <div class="row">
                            <div class="col-sm-6">
                               <div class="form-group">
-                                 <input class="form-control" name="name" id="name" type="text" placeholder="Name">
+                                 <input class="form-control" name="name" id="name" type="text" placeholder="{{__("Name")}}">
                               </div>
                            </div>
                            <div class="col-sm-6">
                               <div class="form-group">
-                                 <input class="form-control" name="email" id="email" type="email" placeholder="Email">
+                                 <input class="form-control" name="email" id="email" type="email" placeholder="{{__("Email")}}">
                               </div>
                            </div>
                            <div class="col-12">
                               <div class="form-group">
                                  <textarea class="form-control w-100" name="content" id="content" cols="30" rows="9"
-                                    placeholder="Write Comment"></textarea>
+                                    placeholder="{{__("Write Comment")}}"></textarea>
                               </div>
                            </div>
                         </div>

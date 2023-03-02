@@ -170,20 +170,21 @@ class SiteController extends Controller
 //===============================================================
     public function StoreComment(Request $request)
     {
-        //dd(session('user_id', 2));
+//將評論表單新增至資料庫評論集
         $comment = Comment::create([
             'name' => $request->name,
             'email' => $request->email,
             'content' => $request->content,
             'article_id' => session('article_id', 20),
             'user_id' => session('user_id', 2)]);
+//flash message
         if ($comment) {
-            print("儲存成功");
-            flash('表單送出成功!!')->overlay();
+            // print("儲存成功");
+            flash('表單送出成功!!')->overlay(); //對話框
             // flash('表單送出成功!!')->success(); //綠色框
         } else {
-            print("儲存失敗");
-            flash('表單送出失敗!!')->overlay();
+            // print("儲存失敗");
+            flash('表單送出失敗!!')->overlay(); //對話框
             // flash('表單送出失敗!!')->error(); //紅色框
         }
         return redirect(url('/blog_details', session('article_id', 2)));

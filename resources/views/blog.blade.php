@@ -69,7 +69,7 @@
                             </nav> --}}
                         </div>
                     </div>
-                  @include('includes._blog_sidebar')
+                  @include('includes._blog_sidebar',['enabled'=>0])
                 </div>
             </div>
         </section>

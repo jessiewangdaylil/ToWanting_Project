@@ -7,7 +7,7 @@
 "Send us your query anytime!":"隨時歡迎送出您的想法與問題!",
 "Get in Touch":"聯繫我們",
 "Blog":"公開資訊",
-"Comments":"評論",
+"Comments":"所有評論",
 "Category":"文章分類",
 "All Articles":"所有文章",
 "New Articles":"最新文章",
@@ -22,5 +22,11 @@
 "Newsletter": "訂閱",
 "Search":"搜尋",
 "Search Keyword":"搜尋關鍵字",
-"Blog details":"閱覽文章"
+"Blog details":"閱覽文章",
+"reply":"回復",
+"Leave a Reply":"評論文章",
+"Name":"姓名",
+"Email":"電子郵箱",
+"Write Comment":"寫下評論內容...",
+"Send Message":"送出"
 }
