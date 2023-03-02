@@ -114,6 +114,14 @@ class SiteController extends Controller
             $articles = $newOnArt;
         }
 //結束-路由判斷 /blog/{cgies?}
+//開始-路由/blog/{cgies?} 的每個文章評論數
+        $index = 0;
+        $CommentQty = null;
+        foreach ($articles as $article) {
+            $CommentQty[$index] = Count(Comment::where('article_id', $article->id)->get());
+            $index++;
+        }
+//結束-路由/blog/{cgies?} 的每個文章評論數
 //開始-blogSidebar menu
         $artCgies = Cgy::where('parent_id', $artCgy->id)->where('parent_id', $artCgy->id)->where('id', '!=', $allCgy->id)->where('id', '!=', $newCgy->id)->orderby('sort', 'asc')->select(['id', 'title'])->get();
 
@@ -123,13 +131,12 @@ class SiteController extends Controller
             $index++;
         }
 //結束-blogSidebar menu
-        return compact('cgy', 'articles', 'artQty', 'artCgies', 'onArt', 'newOnArt', 'cgies', 'allCgy');
+        return compact('cgy', 'articles', 'artQty', 'artCgies', 'onArt', 'newOnArt', 'cgies', 'allCgy', 'CommentQty');
     }
 //===============================================================
     public function blog(Cgy $cgies, Article $ariticle, )
     {
-
-        return view('blog', $this->blogSidebar($cgies, $ariticle))->with([]);
+        return view('blog', $this->blogSidebar($cgies, $ariticle));
     }
 //===============================================================
     public function blog_details(Cgy $cgies, $id, Article $article, User $user)
@@ -146,8 +153,8 @@ class SiteController extends Controller
             $tags[$index] = Tag::find($article_tag->tag_id);
             $index++;
         }
-
-//   *******待修改 如果沒有評論要如何?
+//此文章的所有評論
+        $users[0] = 0;
         $article_coms = Comment::where('article_id', $id)->where('enabled', true)->orderBy('created_at', 'asc')->get();
 
         $index = 0;
@@ -155,7 +162,7 @@ class SiteController extends Controller
             $users[$index] = User::find($comment->user_id);
             $index++;
         }
-
+//
         return view('blog_details', $this->blogSidebar($cgies, $article))->with(['pic' => $article_det->getFirstPic(), 'title' => $article_det->title,
             'content' => $article_det->content,
             'tags' => $tags, 'comments' => $article_coms, 'users' => $users, 'author' => $author]);

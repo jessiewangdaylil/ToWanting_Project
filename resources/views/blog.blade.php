@@ -39,7 +39,7 @@
                                     <p>{{$article->content_small}}</p>
                                     <ul class="blog-info-link">
                                         <li><a href="#"><i class="fa fa-user"></i> {{$cgy->title}}</a></li>
-                                        <li><a href="#"><i class="fa fa-comments"></i> 03 {{__('Comments')}}</a></li>
+                                        <li><a href="#"><i class="fa fa-comments"></i> {{$CommentQty[$loop->index]}} {{__('Comments')}}</a></li>
                                     </ul>
                                 </div>
                             </article>
