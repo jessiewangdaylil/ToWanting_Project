@@ -116,9 +116,9 @@ class SiteController extends Controller
 //結束-路由判斷 /blog/{cgies?}
 //開始-路由/blog/{cgies?} 的每個文章評論數
         $index = 0;
-        $CommentQty = null;
+        $CommQty = null;
         foreach ($articles as $article) {
-            $CommentQty[$index] = Count(Comment::where('article_id', $article->id)->get());
+            $CommQty[$index] = Count(Comment::where('article_id', $article->id)->get());
             $index++;
         }
 //結束-路由/blog/{cgies?} 的每個文章評論數
@@ -131,7 +131,7 @@ class SiteController extends Controller
             $index++;
         }
 //結束-blogSidebar menu
-        return compact('cgy', 'articles', 'artQty', 'artCgies', 'onArt', 'newOnArt', 'cgies', 'allCgy', 'CommentQty');
+        return compact('cgy', 'articles', 'artQty', 'artCgies', 'onArt', 'newOnArt', 'cgies', 'allCgy', 'CommQty');
     }
 //===============================================================
     public function blog(Cgy $cgies, Article $ariticle, )
@@ -144,41 +144,43 @@ class SiteController extends Controller
 //Session  目前登入使用者、目標瀏覽文章
         session(['article_id' => $id, 'user_id' => Auth::id()]);
 //目標瀏覽文章、作者
-        $article_det = Article::find($id);
-        $author = User::find($article_det->author_id);
+        $artIndex = Article::find($id);
+        $author = User::find($artIndex->author_id);
 //此文章的所有標籤
-        $article_tags = ArticleTag::where('article_id', $id)->get();
+        $artTags = ArticleTag::where('article_id', $id)->get();
         $index = 0;
-        foreach ($article_tags as $article_tag) {
-            $tags[$index] = Tag::find($article_tag->tag_id);
+        foreach ($artTags as $artTag) {
+            $tags[$index] = Tag::find($artTag->tag_id);
             $index++;
         }
 //此文章的所有評論
         $users[0] = 0;
-        $article_coms = Comment::where('article_id', $id)->where('enabled', true)->orderBy('created_at', 'asc')->get();
+        $artComms = Comment::where('article_id', $id)->where('enabled', true)->orderBy('created_at', 'asc')->get();
 
         $index = 0;
-        foreach ($article_coms as $comment) {
+        foreach ($artComms as $comment) {
             $users[$index] = User::find($comment->user_id);
             $index++;
         }
+//作者的最新文章
+        $authArt = Article::where('author_id', $artIndex->author_id)->orderby('created_at', 'desc')->take(5)->get();
+//關鍵字
+
 //
-        return view('blog_details', $this->blogSidebar($cgies, $article))->with(['pic' => $article_det->getFirstPic(), 'title' => $article_det->title,
-            'content' => $article_det->content,
-            'tags' => $tags, 'comments' => $article_coms, 'users' => $users, 'author' => $author]);
+        return view('blog_details', $this->blogSidebar($cgies, $article))->with(['article' => $artIndex, 'tags' => $tags, 'comments' => $artComms, 'users' => $users, 'author' => $author, 'authorArticle' => $authArt]);
     }
 //===============================================================
     public function StoreComment(Request $request)
     {
 //將評論表單新增至資料庫評論集
-        $comment = Comment::create([
+        $artComm = Comment::create([
             'name' => $request->name,
             'email' => $request->email,
             'content' => $request->content,
             'article_id' => session('article_id', 20),
             'user_id' => session('user_id', 2)]);
 //flash message
-        if ($comment) {
+        if ($artComm) {
             // print("儲存成功");
             flash('表單送出成功!!')->overlay(); //對話框
             // flash('表單送出成功!!')->success(); //綠色框

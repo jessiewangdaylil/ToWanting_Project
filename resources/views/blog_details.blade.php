@@ -23,10 +23,10 @@
                <div class="col-lg-8 posts-list">
                   <div class="single-post">
                      <div class="feature-img">
-                        <img class="img-fluid" src="{{Voyager::image($pic)}}" alt="">
+                        <img class="img-fluid" src="{{Voyager::image($article->getFirstPic())}}" alt="">
                      </div>
                      <div class="blog_details">
-                        <h2>{{$title}}
+                        <h2>{{$article->title}}
                         </h2>
                         <ul class="blog-info-link mt-3 mb-4">
                            <li><a href="#"><i class="fa fa-user"></i>
@@ -37,7 +37,7 @@
                            <li><a href="#"><i class="fa fa-comments"></i> {{count($comments)}} {{__('Comments')}}</a></li>
                         </ul>
                         <p class="excert">
-                           {!!$content!!}
+                           {!!$article->content!!}
                         </p>
                         {{-- <div class="quote-wrapper">
                            <div class="quotes">
