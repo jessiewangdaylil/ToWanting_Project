@@ -112,6 +112,7 @@ class SiteController extends Controller
     {
         $cart = \Cart::session(Auth::user()->id)->getContent();
         $index = 0;
+        $buyItem = null;
         foreach ($cart as $item) {
             $buyItem[$index] = Item::find($item->id);
             $index++;

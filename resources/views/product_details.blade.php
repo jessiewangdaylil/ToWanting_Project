@@ -51,7 +51,7 @@
                             </div>
                         @else
                             <div class="add_to_cart">
-                                <a href="" class="btn_3">{{__('Add to cart')}}</a>
+                                <a href="#" class="btn_3">{{__('Add to cart')}}</a>
                             </div>
                         @endif
 

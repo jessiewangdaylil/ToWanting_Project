@@ -53,7 +53,7 @@ Route::namespace ('App\Http\controllers')->group(function () {
     Route::post('/contactstored2', 'SiteController@storeContactTest'); //表單元素集測試
     Route::get('getcart', function () {
         $cart = \Cart::session(Auth::user()->id)->getContent();
-        dd($cart[9]->quantity);
+        dd($cart);
 
     });
 
