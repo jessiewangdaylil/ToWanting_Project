@@ -5,7 +5,7 @@
                                         <img src="{{Voyager::image($item->getFirstPic())}}" alt="">
                                         <div class="img-cap">
                                           @if ($item->stock > 0)
-                                            <span>{{__('Add to cart')}}</span>
+                                            <a href="{{url('/add_item/'.$item->id)}}"><span>{{__('Add to cart')}}</span></a>
                                           @else
                                             <span>{{__('Sold out')}}</span>
                                           @endif

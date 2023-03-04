@@ -1,7 +1,7 @@
 {
 "All rights reserved | This template is made with by":"保留所有權利 | 這個模板設計者為",
 "Add to cart":"加入購物車",
-"Sold out": "加入購物車",
+"Sold out": "銷售一空",
 "Quantity":"數量",
 "Send":"送出",
 "Send us your query anytime!":"隨時歡迎送出您的想法與問題!",
@@ -29,5 +29,16 @@
 "Email":"電子郵箱",
 "Write Comment":"寫下評論內容...",
 "Send Message":"送出",
-"Dashboard":"儀錶板"
+"Dashboard":"儀錶板",
+"Shop":"商店",
+"Most populer":"人氣商品",
+"per page":"件/頁",
+"Cart List":"購物車",
+"Product":"產品",
+"Price":"價格",
+"Total":"總計",
+"Update Cart":"更新購物車",
+"Use Coupon":"使用優惠券",
+"Subtotal":"小計"
+
 }

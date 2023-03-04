@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,23 +32,29 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 Route::namespace ('App\Http\controllers')->group(function () {
-    Route::get('/index', 'SiteController@index');
     Route::get('/about', 'SiteController@about');
-    Route::get('/blog_details/{id}', 'SiteController@blog_details');
-    Route::get('/blog/{cgies?}', 'SiteController@blog');
-    Route::post('/commentstored', 'SiteController@StoreComment');
+    Route::get('/index', 'SiteController@index');
+    Route::get('/shop', 'SiteController@shop');
+    Route::get('/product_details/{item}', 'SiteController@product_details');
+    Route::get('/add_item/{item}', 'SiteController@addItem');
+    Route::get('/elements', 'SiteController@elements');
     Route::get('/cart', 'SiteController@cart');
     Route::get('/checkout', 'SiteController@checkout');
     Route::get('/confirmation', 'SiteController@confirmation');
     Route::get('/contact', 'SiteController@contact');
     Route::post('/contactstored', 'SiteController@storeContact');
+
+    Route::get('/blogsidebar', 'SiteController@blogSidebar');
+    Route::get('/blog_details/{id}', 'SiteController@blog_details');
+    Route::get('/blog/{cgies?}', 'SiteController@blog');
+    Route::post('/commentstored', 'SiteController@StoreComment');
+
     Route::get('/contact2', 'SiteController@contact2'); //表單元素集測試
     Route::post('/contactstored2', 'SiteController@storeContactTest'); //表單元素集測試
+    Route::get('getcart', function () {
+        $cart = \Cart::session(Auth::user()->id)->getContent();
+        dd($cart[9]->quantity);
 
-    Route::get('/elements', 'SiteController@elements');
-    Route::get('/product_details/{item}', 'SiteController@product_details');
-    Route::get('/product_list', 'SiteController@product_list');
-    Route::get('/shop', 'SiteController@shop');
-    Route::get('/blogsidebar', 'SiteController@blogSidebar');
+    });
 
 });

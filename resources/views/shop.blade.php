@@ -8,7 +8,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="hero-cap text-center">
-                                <h2>Watch Shop</h2>
+                                <h2>{{__('Shop')}}</h2>
                             </div>
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                 <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">{{$rlImCgy->title}}</a>
                                 <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"> {{$vlImCgy->title}}</a>
-                                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false"> Most populer </a>
+                                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false"> {{__("Most populer")}} </a>
                             </div>
                         </nav>
                         <!--End Nav Button  -->
@@ -39,10 +39,10 @@
                         <form action="#">
                             <div class="select-itms">
                                 <select name="select" id="select1">
-                                    <option value="">40 per page</option>
-                                    <option value="">50 per page</option>
-                                    <option value="">60 per page</option>
-                                    <option value="">70 per page</option>
+                                    <option value="">40 {{__('per page')}}</option>
+                                    <option value="">50 {{__('per page')}}</option>
+                                    <option value="">60 {{__('per page')}}</option>
+                                    <option value="">70 {{__('per page')}}</option>
                                 </select>
                             </div>
                         </form>

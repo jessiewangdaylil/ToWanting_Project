@@ -19,7 +19,7 @@ class SiteController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->only(['cart', 'confirmation', 'checkout']);
+        $this->middleware('auth')->only(['cart', 'confirmation', 'checkout', 'StoreComment']);
 
     }
 
@@ -83,12 +83,50 @@ class SiteController extends Controller
 // Card(3) 人氣商品 popular Item => prIm
         $prCount = Item::where('enabled', true)->count();
         $prIm = Item::where('enabled', true)->orderby('star', 'desc')->take($prCount / 5)->get();
+        session(['rePage' => request()->path()]);
         return view('shop', compact('rlImCgy', 'rlIm', 'vlImCgy', 'vlIm', 'prIm'));
     }
 //===============================================================
     public function product_details(Item $item)
     {
         return view('product_details', compact('item'));
+    }
+//===============================================================
+    public function addItem(Item $item)
+    {
+
+        \Cart::session(Auth::id())->add(array(
+            'id' => $item->id,
+            'name' => $item->title,
+            'price' => $item->price_new,
+            'quantity' => 1,
+            'attributes' => array(),
+            'associatedModel' => $item,
+        ));
+
+        return redirect('/' . session('rePage'));
+
+    }
+//===============================================================
+    public function cart()
+    {
+        $cart = \Cart::session(Auth::user()->id)->getContent();
+        $index = 0;
+        foreach ($cart as $item) {
+            $buyItem[$index] = Item::find($item->id);
+            $index++;
+        }
+        return view('cart', compact('buyItem', 'cart'));
+    }
+//===============================================================
+    public function checkout()
+    {
+        return view('checkout');
+    }
+//===============================================================
+    public function confirmation()
+    {
+        return view('confirmation');
     }
 //===============================================================
     public function blogSidebar(Cgy $cgies, Article $ariticle)
@@ -148,7 +186,8 @@ class SiteController extends Controller
     public function blog_details(Cgy $cgies, $id, Article $article, User $user)
     {
 //Session  目前登入使用者、目標瀏覽文章
-        session(['article_id' => $id, 'user_id' => Auth::id()]);
+        session(['rePage' => request()->path(), 'article_id' => $id, 'user_id' => Auth::id()]);
+
 //目標瀏覽文章、作者
         $artIndex = Article::find($id);
         $author = User::find($artIndex->author_id);
@@ -195,7 +234,7 @@ class SiteController extends Controller
             flash('表單送出失敗!!')->overlay(); //對話框
             // flash('表單送出失敗!!')->error(); //紅色框
         }
-        return redirect(url('/blog_details', session('article_id', 2)));
+        return redirect('/' . session('rePage'));
     }
 //===============================================================
     public function contact()
@@ -228,30 +267,11 @@ class SiteController extends Controller
         dd($request);
         return redirect('/contact2');
     }
-//===============================================================
-    public function cart()
-    {
-        return view('cart');
-    }
-//===============================================================
-    public function checkout()
-    {
-        return view('checkout');
-    }
-//===============================================================
-    public function confirmation()
-    {
-        return view('confirmation');
-    }
+
 //===============================================================
     public function elements()
     {
         return view('elements');
     }
-//===============================================================
-    public function product_list()
-    {
-        return view('product_list');
-    }
-//===============================================================
+
 }
