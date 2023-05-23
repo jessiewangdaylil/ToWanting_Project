@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
    <link rel="stylesheet" href="{{asset('fontawesome-free-6.2.1-web\css\all.min.css')}}">
    @yield('css')
+   @livewireStyles
 </head>
 
 <body>
@@ -244,5 +245,6 @@
     <!-- Flash Message 3秒之後消失，非必須 -->
     $('div.alert').delay(3000).fadeOut(350);
     </script>
+ @livewireScripts
 </body>
 </html>

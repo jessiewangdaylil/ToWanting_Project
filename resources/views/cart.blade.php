@@ -49,15 +49,26 @@
                           <h5>{{$item->price_new}}</h5>
                         </td>
                         <td>
-                          <div class="product_count">
+                          {{-- {{$cart[$item->id]->quantity}} --}}
+
+                         @livewire('counter',
+                          ['item' => $item->id,
+                           'count' => $cart[$item->id]->quantity ,
+                           'increClass' => 'input-number-increment',
+                           'decreClass' => 'input-number-decrement',
+                           'inputClass' => 'input'])
+                          {{-- <div class="product_count">
                             <span class="input-number-decrement"> <i class="ti-minus"></i></span>
                             <input class="input-number" type="text" value="{{$cart[$item->id]->quantity}}" min="0" max="10">
                             <span class="input-number-increment"> <i class="ti-plus"></i></span>
-                          </div>
+                          </div> --}}
                         </td>
-                        <td>
+                        @livewire('sub-total',
+                          ['cart'=>$cart,
+                          'item'=>$item])
+                        {{-- <td>
                           <h5>${{$itemTotal[$loop->index]=$item->price_new * $cart[$item->id]->quantity }}</h5>
-                        </td>
+                        </td> --}}
                       </tr>
                       @endforeach
                   @endif
@@ -82,11 +93,11 @@
                       <h5>{{__('Subtotal')}}</h5>
                     </td>
                     <td>
-                  @if ($buyItem ==null)
+                  {{-- @if ($buyItem ==null)
                       <h5>$0</h5>
                   @else
                       <h5>${{array_sum($itemTotal)}}</h5>
-                  @endif
+                  @endif --}}
 
                     </td>
                   </tr>

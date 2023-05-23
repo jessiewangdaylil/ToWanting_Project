@@ -38,11 +38,16 @@
                     <div class="card_area">
                         <div class="product_count_area">
                             <p>{{__('Quantity')}}</p>
-                            <div class="product_count d-inline-block">
+                            @livewire('counter',
+                            ['count'=>1 ,
+                            'increClass'=>'number-increment',
+                            'decreClass'=>'number-decrement',
+                            'inputClass'=>'product_count_item'])
+                            {{-- <div class="product_count d-inline-block">
                                 <span class="product_count_item inumber-decrement"> <i class="ti-minus"></i></span>
                                 <input class="product_count_item input-number" type="text" value="1" min="0" max="10">
                                 <span class="product_count_item number-increment"> <i class="ti-plus"></i></span>
-                            </div>
+                            </div> --}}
                             <p>${{$item->price_new}}</p>
                         </div>
                         @if ($item->stock == 0)
