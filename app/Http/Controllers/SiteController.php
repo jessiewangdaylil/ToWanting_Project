@@ -83,6 +83,7 @@ class SiteController extends Controller
 // Card(3) 人氣商品 popular Item => prIm
         $prCount = Item::where('enabled', true)->count();
         $prIm = Item::where('enabled', true)->orderby('star', 'desc')->take($prCount / 5)->get();
+
         session(['rePage' => request()->path()]);
         return view('shop', compact('rlImCgy', 'rlIm', 'vlImCgy', 'vlIm', 'prIm'));
     }
@@ -103,7 +104,7 @@ class SiteController extends Controller
             'attributes' => array(),
             'associatedModel' => $item,
         ));
-
+        // dd(session('rePage'));
         return redirect('/' . session('rePage'));
 
     }

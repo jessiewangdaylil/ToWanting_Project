@@ -6,16 +6,25 @@ use Livewire\Component;
 
 class SubTotal extends Component
 {
+    // public $labelId;
+    // public $count = 0;
+    // public $subTotal;
+    // protected $listeners =
+    //     ['countIncre' => 'addsubTotal',
+    //     'countDecre' => 'subSubTotal'];
+    // public function addsubTotal($cart, $itemId, $conponentId)
+    // {
+    //     $this->labelId = $conponentId;
+    //     $this->subTotal = $cart[$itemId]->getPriceSum();
+    // }
+    // public function subSubTotal($cart, $itemId, $conponentId)
+    // {
+    //     $this->labelId = $conponentId;
+    //     $this->subTotal = $cart[$itemId]->getPriceSum();
+    // }
 
-    public $cart;
-    public $item;
-
-    public function update()
-    {
-
-    }
     public function render()
     {
-        return view('livewire.sub-total');
+        // return view('livewire.sub-total');
     }
 }

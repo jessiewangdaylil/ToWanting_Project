@@ -49,25 +49,22 @@
                           <h5>{{$item->price_new}}</h5>
                         </td>
                         <td>
-                          {{-- {{$cart[$item->id]->quantity}} --}}
-
                          @livewire('counter',
                           ['item' => $item->id,
                            'count' => $cart[$item->id]->quantity ,
                            'increClass' => 'input-number-increment',
                            'decreClass' => 'input-number-decrement',
-                           'inputClass' => 'input'])
+                           'inputClass' => 'input',
+                           'cart'=>$cart],key($item->id))
+                        </td>
                           {{-- <div class="product_count">
                             <span class="input-number-decrement"> <i class="ti-minus"></i></span>
                             <input class="input-number" type="text" value="{{$cart[$item->id]->quantity}}" min="0" max="10">
                             <span class="input-number-increment"> <i class="ti-plus"></i></span>
                           </div> --}}
-                        </td>
-                        @livewire('sub-total',
-                          ['cart'=>$cart,
-                          'item'=>$item])
-                        {{-- <td>
-                          <h5>${{$itemTotal[$loop->index]=$item->price_new * $cart[$item->id]->quantity }}</h5>
+                        {{-- </td>
+                        <td>
+                          <h5>${{}}</h5>
                         </td> --}}
                       </tr>
                       @endforeach

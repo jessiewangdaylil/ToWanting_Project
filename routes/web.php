@@ -59,6 +59,7 @@ Route::namespace ('App\Http\controllers')->group(function () {
 
     Route::view('/livewire', 'counter');
     Route::get('/test', function () {
-        return \Cart::session(Auth::user()->id)->getContent();
+        $Items = \Cart::session(Auth::user()->id)->getSubTotal();
+        return $Items;
     });
 });
