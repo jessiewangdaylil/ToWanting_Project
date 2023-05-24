@@ -33,7 +33,10 @@
                   @if ($buyItem == null)
 
                   @else
-                      @foreach ($buyItem as $item)
+                  @foreach ($buyItem as $item)
+                    @livewire('counter',['item'=>$item,'cart'=>$cart],key($item->id))
+                  @endforeach
+                      {{-- @foreach ($buyItem as $item)
                         <tr>
                         <td>
                           <div class="media">
@@ -49,28 +52,18 @@
                           <h5>{{$item->price_new}}</h5>
                         </td>
                         <td>
-                         @livewire('counter',
-                          ['item' => $item->id,
-                           'count' => $cart[$item->id]->quantity ,
-                           'increClass' => 'input-number-increment',
-                           'decreClass' => 'input-number-decrement',
-                           'inputClass' => 'input',
-                           'cart'=>$cart],key($item->id))
-                        </td>
-                          {{-- <div class="product_count">
+                          <div class="product_count">
                             <span class="input-number-decrement"> <i class="ti-minus"></i></span>
                             <input class="input-number" type="text" value="{{$cart[$item->id]->quantity}}" min="0" max="10">
                             <span class="input-number-increment"> <i class="ti-plus"></i></span>
-                          </div> --}}
-                        {{-- </td>
+                          </div>
+                        </td>
                         <td>
-                          <h5>${{}}</h5>
-                        </td> --}}
+                          <h5>$123</h5>
+                        </td>
                       </tr>
-                      @endforeach
+                      @endforeach --}}
                   @endif
-
-
                   <tr class="bottom_button">
                     <td>
                       <a class="btn_1" href="#">{{__('Update Cart')}}</a>
