@@ -1,3 +1,3 @@
 <div>
-<h5>{{$total}}</h5>
+  <h5>{{$total}}</h5>
 </div>

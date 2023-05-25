@@ -8,8 +8,12 @@ use Livewire\Component;
 class Total extends Component
 {
     public $total;
-    protected $listeners = ['increment' => 'total',
-        'decrement' => 'total'];
+    protected $listeners = [
+        'increment' => 'total',
+        'decrement' => 'total',
+        'change' => 'total',
+        'addCart' => 'total',
+    ];
 
     public function total()
     {
@@ -17,10 +21,14 @@ class Total extends Component
     }
     public function mount()
     {
+
         $this->total = $this->getTotal();
+        // dd($this->total);
+
     }
     public function getTotal()
     {
+        // dd(\Cart::session(Auth::user()->id)->getTotal());
         return \Cart::session(Auth::user()->id)->getTotal();
     }
     public function render()

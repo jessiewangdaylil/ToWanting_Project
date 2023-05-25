@@ -23,7 +23,9 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
    <link rel="stylesheet" href="{{asset('fontawesome-free-6.2.1-web\css\all.min.css')}}">
    @yield('css')
+   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.1/dist/cdn.min.js"></script>
    @livewireStyles
+
 </head>
 
 <body>
@@ -245,6 +247,7 @@
     <!-- Flash Message 3秒之後消失，非必須 -->
     $('div.alert').delay(3000).fadeOut(350);
     </script>
+    {{-- <script src="{{ mix('js/app.js') }}"></script> --}}
  @livewireScripts
 </body>
 </html>

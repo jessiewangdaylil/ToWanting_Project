@@ -33,7 +33,21 @@
                   @if ($buyItem == null)
                   @else
                   @foreach ($buyItem as $item)
-                    @livewire('counter',['item'=>$item,'cart'=>$cart],key($item->id))
+                    @livewire('counter',[
+                      'item'=>$item,
+                      'cart'=>$cart,
+                      'class'=>[
+                        'media',
+                        'd-flex',
+                        'media-body',
+                        'product_count',
+                        'input-number-decrement',
+                        'ti-minus',
+                        '',
+                        'input-number-increment',
+                        'ti-plus'
+                      ]
+                      ,],key($item->id))
                   @endforeach
                       {{-- @foreach ($buyItem as $item)
                         <tr>
@@ -82,7 +96,7 @@
                       <h5>{{__('Subtotal')}}</h5>
                     </td>
                     <td>
-                    @livewire('total')
+                    @livewire('total',)
                     </td>
                   </tr>
                   <tr class="shipping_area">

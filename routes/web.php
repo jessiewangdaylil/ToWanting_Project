@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Item;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -59,8 +59,17 @@ Route::namespace ('App\Http\controllers')->group(function () {
     });
 
     Route::view('/livewire', 'counter');
+
+    Route::get('/clean', function () {
+        Artisan::call('cache:clear');
+        Artisan::call('route:cache');
+        Artisan::call('view:clear');
+        Artisan::call('config:cache');
+        return "all cleared ...";
+    });
     Route::get('/test', function () {
         $Items = \Cart::session(Auth::user()->id)->getContent();
-        return Item::where('id', 7)->first()->stock;
+        return \Cart::session(Auth::user()->id)->getTotal();
     });
+
 });

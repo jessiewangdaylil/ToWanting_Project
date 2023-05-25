@@ -1,10 +1,10 @@
 <tr>
   <td>
-    <div class="media">
-      <div class="d-flex">
+    <div class="{{$class[0]}}">
+      <div class="{{$class[1]}}">
         <img src="{{Voyager::image($item->getFirstPic())}}" alt="" />
       </div>
-      <div class="media-body">
+      <div class="{{$class[2]}}">
        <a href="{{url("/product_details").'/'.$item->id}}"><p>{{$item->title}}</p></a>
       </div>
     </div>
@@ -12,14 +12,15 @@
   <td>
     <h5>{{$item->price_new}}</h5>
   </td>
+
   <td>
-    <div class="product_count">
-      <span wire:click="decrement" class="input-number-decrement"> <i class="ti-minus"></i></span>
-      <input wire:model="count"
-      wire:change="change" type="text" min=0 max={{$stock}}>
-      <span wire:click="increment" class="input-number-increment"> <i class="ti-plus"></i></span>
-      {{-- {{$count}} --}}
-    </div>
+        @include('includes._cart_counter')
+    {{-- <div class="{{$class[3]}}">
+      <span wire:click="decrement" class="{{$class[4]}}"> <i class="{{$class[5]}}"></i></span>
+      <input wire:model="count" value="{{$count}}"
+      wire:change="change"  type="text" min=0 max={{$stock}}>
+      <span wire:click="increment" class="{{$class[6]}}"> <i class="{{$class[7]}}"></i></span>
+    </div>--}}
   </td>
   <td>
     <h5>{{$subTotal}}</h5>
