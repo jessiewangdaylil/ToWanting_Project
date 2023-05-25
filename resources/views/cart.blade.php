@@ -31,7 +31,6 @@
                 </thead>
                 <tbody>
                   @if ($buyItem == null)
-
                   @else
                   @foreach ($buyItem as $item)
                     @livewire('counter',['item'=>$item,'cart'=>$cart],key($item->id))
@@ -66,7 +65,7 @@
                   @endif
                   <tr class="bottom_button">
                     <td>
-                      <a class="btn_1" href="#">{{__('Update Cart')}}</a>
+                      <a class="btn_1" href="{{url('/cart')}}">{{__('Update Cart')}}</a>
                     </td>
                     <td></td>
                     <td></td>
@@ -83,12 +82,7 @@
                       <h5>{{__('Subtotal')}}</h5>
                     </td>
                     <td>
-                  {{-- @if ($buyItem ==null)
-                      <h5>$0</h5>
-                  @else
-                      <h5>${{array_sum($itemTotal)}}</h5>
-                  @endif --}}
-
+                    @livewire('total')
                     </td>
                   </tr>
                   <tr class="shipping_area">
@@ -135,7 +129,7 @@
                 </tbody>
               </table>
               <div class="checkout_btn_inner float-right">
-                <a class="btn_1" href="#">Continue Shopping</a>
+                <a class="btn_1" href="{{url('/shop')}}">Continue Shopping</a>
                 <a class="btn_1 checkout_btn_1" href="#">Proceed to checkout</a>
               </div>
             </div>

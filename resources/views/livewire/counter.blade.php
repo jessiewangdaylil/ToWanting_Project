@@ -5,7 +5,7 @@
         <img src="{{Voyager::image($item->getFirstPic())}}" alt="" />
       </div>
       <div class="media-body">
-        <p>{{$item->title}}</p>
+       <a href="{{url("/product_details").'/'.$item->id}}"><p>{{$item->title}}</p></a>
       </div>
     </div>
   </td>
@@ -14,13 +14,15 @@
   </td>
   <td>
     <div class="product_count">
-      <span class="input-number-decrement"> <i class="ti-minus"></i></span>
-      <input class="input-number" type="text" value="{{$cart[$item->id]->quantity}}" min="0" max="10">
-      <span class="input-number-increment"> <i class="ti-plus"></i></span>
+      <span wire:click="decrement" class="input-number-decrement"> <i class="ti-minus"></i></span>
+      <input wire:model="count"
+      wire:change="change" type="text" min=0 max={{$stock}}>
+      <span wire:click="increment" class="input-number-increment"> <i class="ti-plus"></i></span>
+      {{-- {{$count}} --}}
     </div>
   </td>
   <td>
-    <h5>$123</h5>
+    <h5>{{$subTotal}}</h5>
   </td>
 </tr>
 

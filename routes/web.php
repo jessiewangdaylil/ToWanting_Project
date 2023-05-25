@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -59,7 +60,7 @@ Route::namespace ('App\Http\controllers')->group(function () {
 
     Route::view('/livewire', 'counter');
     Route::get('/test', function () {
-        $Items = \Cart::session(Auth::user()->id)->getSubTotal();
-        return $Items;
+        $Items = \Cart::session(Auth::user()->id)->getContent();
+        return Item::where('id', 7)->first()->stock;
     });
 });
