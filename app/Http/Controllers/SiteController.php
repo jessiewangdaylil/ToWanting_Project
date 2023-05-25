@@ -90,8 +90,7 @@ class SiteController extends Controller
 //===============================================================
     public function product_details(Item $item)
     {
-        $cart = \Cart::session(Auth::user()->id)->getContent();
-        return view('product_details', compact('item', 'cart'));
+        return view('product_details', compact('item'));
     }
 //===============================================================
     public function addItem(Item $item)

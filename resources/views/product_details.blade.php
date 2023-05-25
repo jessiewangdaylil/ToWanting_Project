@@ -35,11 +35,12 @@
                     <p>
                         {!!$item->chars!!}
                     </p>
-                    @livewire('productDetail',
+                    @livewire('product-detail',
                     [
                       'class'=>[
                         "card_area",
                         "product_count_area",
+                        '',
                         "product_count d-inline-block",
                         "product_count_item number-decrement",
                         "ti-minus",
@@ -47,8 +48,7 @@
                         "product_count_item number-increment",
                         "ti-plus",
                         "add_to_cart"],
-                      'item'=>$item,
-                      'cart'=>$cart
+                      'item'=>$item
                     ],
                     key($item->id))
                     {{-- <div class="card_area">

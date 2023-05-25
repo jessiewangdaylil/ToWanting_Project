@@ -25,6 +25,12 @@
   <td>
     <h5>{{$subTotal}}</h5>
   </td>
+  <td>
+
+<span class="{{ti-trash}}" wire: wire:click="dropItemChange">
+
+</span>
+  </td>
 </tr>
 
 

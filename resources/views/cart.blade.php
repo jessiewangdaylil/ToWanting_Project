@@ -27,6 +27,7 @@
                     <th scope="col">{{__('Price')}}</th>
                     <th scope="col">{{__('Quantity')}}</th>
                     <th scope="col">{{__('Total')}}</th>
+                    <th scope="col">{{__('Delete')}}</th>
                   </tr>
                 </thead>
                 <tbody>
