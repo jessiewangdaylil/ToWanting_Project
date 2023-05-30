@@ -35,7 +35,7 @@
                     <div class="grid-list-view">
                     </div>
                     <!-- Select items -->
-                    <div class="select-this">
+                    {{-- <div class="select-this">
                         <form action="#">
                             <div class="select-itms">
                                 <select name="select" id="select1">
@@ -46,7 +46,7 @@
                                 </select>
                             </div>
                         </form>
-                    </div>
+                    </div> --}}
                 </div>
                 <!-- Nav Card -->
                 <div class="tab-content" id="nav-tabContent">

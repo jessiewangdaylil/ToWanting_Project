@@ -9,7 +9,7 @@
                   <div class="single-slider slider-height d-flex align-items-center slide-bg">
                     <div class="container">
                         <div class="row justify-content-between align-items-center">
-                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                            <div class="col-xl-6 col-lg-6 col-md-7 col-sm-7">
                                 <div class="hero__caption">
                                     <h1 data-animation="fadeInLeft" data-delay=".4s" data-duration="2000ms"> {{$slider->title}} </h1>
                                     <p data-animation="fadeInLeft" data-delay=".7s" data-duration="2000ms"> {{$slider->subtitle}} </p>
@@ -19,7 +19,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 d-none d-sm-block">
+                            <div class="col-xl-4 col-lg-4 col-md-3 col-sm-3 d-none d-sm-block">
                                 <div class="hero__img" data-animation="bounceIn" data-delay=".4s">
                                     <img src="{{Voyager::image($slider->getFirstPic())}}" alt="" class=" heartbeat">
                                 </div>
@@ -37,20 +37,20 @@
             <div class="container">
               @foreach ($introductions as $introduction)
                 @if ($loop->iteration%2 ==1)
-                      <div class="row align-items-center justify-content-between padding-130">
-                        <div class="col-lg-5 col-md-6">
+                      {{-- <div class="row align-items-center justify-content-between padding-130">
+                        <div class="col-lg-6 col-md-6">
                             <div class="watch-details mb-40">
                                 <h2>{{$introduction->title}}</h2>
                                 <p>{!!$introduction->content!!}</p>
-                                <a href="{{$introduction->url}}<" class="btn">{{$introduction->url_txt}}<</a>
+                                <a href="{{$introduction->url}}<" class="btn">{{$introduction->url_txt}}</a>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-10">
+                        <div class="col-lg-4 col-md-4 col-sm-10">
                             <div class="choice-watch-img mb-40">
                                 <img src="{{Voyager::image($introduction->getFirstPic())}}" alt="">
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 @else
                     <div class="row align-items-center justify-content-between">
                         <div class="col-lg-6 col-md-6 col-sm-10">
@@ -62,7 +62,7 @@
                             <div class="watch-details mb-40">
                                  <h2>{{$introduction->title}}</h2>
                                 <p>{!!$introduction->content!!}</p>
-                                <a href="{{$introduction->url}}<" class="btn">{{$introduction->url_txt}}<</a>
+                                <a href="{{$introduction->url}}<" class="btn">{{$introduction->url_txt}}</a>
                             </div>
                         </div>
                     </div>
@@ -84,15 +84,15 @@
                 <!-- Arrow -->
                 <div class="thumb-content-box">
                     <div class="thumb-content">
-                        <h3>Next Video</h3>
-                        <a href="#"> <i class="flaticon-arrow"></i></a>
+                        <h3>品牌形象影片</h3>
+                        {{-- <a href="#"> <i class="flaticon-arrow"></i></a> --}}
                     </div>
                 </div>
             </div>
         </div>
         <!--(3) Video Area End -->
         <!--?(4) Item Arrival Start -->
-        <section class="new-product-area section-padding30">
+        {{-- <section class="new-product-area section-padding30">
             <div class="container">
                 <!-- Section tittle -->
                 <div class="row">
@@ -138,10 +138,10 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
         <!--(4)  Item Arrival End -->
        <!--?(5) Popular Article Start -->
-        <div class="popular-items section-padding30">
+        {{-- <div class="popular-items section-padding30">
             <div class="container">
                 <!-- Section tittle -->
                 <div class="row justify-content-center">
@@ -263,7 +263,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!--(5) Popular Article End -->
 
  @endsection

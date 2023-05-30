@@ -27,7 +27,7 @@
   </td>
   <td>
 
-<span class="{{ti-trash}}" wire: wire:click="dropItemChange">
+{{-- <span class="{{ti-trash}}" wire: wire:click="dropItemChange"> --}}
 
 </span>
   </td>

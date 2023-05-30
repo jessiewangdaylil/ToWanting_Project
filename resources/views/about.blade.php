@@ -2,7 +2,7 @@
 @section('title','首頁')
 @section('content')
         <!-- Hero Area Start-->
-        <div class="slider-area ">
+        {{-- <div class="slider-area ">
             <div class="single-slider slider-height2 d-flex align-items-center">
                 <div class="container">
                     <div class="row">
@@ -14,7 +14,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- Hero Area End-->
         <!-- About Details Start -->
         <div class="about-details section-padding30">
@@ -22,18 +22,20 @@
                 <div class="row">
                     <div class="offset-xl-1 col-lg-8">
                         <div class="about-details-cap mb-50">
-                            <h4>Our Mission</h4>
-                            <p>Consectetur adipiscing elit, sued do eiusmod tempor ididunt udfgt labore et dolore magna aliqua. Quis ipsum suspendisces gravida. Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan lacus. Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan lacus.
+                            <h4>時光予你</h4>
+                            <p>紀念，我們的回憶不變<br>
+                              紀念，我們的獨特體驗<br>
+                              紀念，我們的驚喜發現<br>
                             </p>
-                            <p> Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan lacus. Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan.</p>
+                            <p>這是一首由禮物、情感和時光交織的樂曲。</p>
                         </div>
 
-                        <div class="about-details-cap mb-50">
+                        {{-- <div class="about-details-cap mb-50">
                             <h4>Our Vision</h4>
                             <p>Consectetur adipiscing elit, sued do eiusmod tempor ididunt udfgt labore et dolore magna aliqua. Quis ipsum suspendisces gravida. Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan lacus. Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan lacus.
                             </p>
                             <p> Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan lacus. Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan.</p>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

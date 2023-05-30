@@ -105,6 +105,7 @@
     content: '\e61a';
     font-size: 20px;
     line-height: 30px;
+    cursor: pointer;
 }
 .ti-pin:before {
     content: '\e61b';
@@ -131,6 +132,7 @@
     content: '\e622';
     font-size: 20px;
     line-height: 30px;
+    cursor: pointer;
 }
 .ti-medall:before {
     content: '\e623';
