@@ -9,7 +9,7 @@
                   <div class="single-slider slider-height d-flex align-items-center slide-bg">
                     <div class="container">
                         <div class="row justify-content-between align-items-center">
-                            <div class="col-xl-6 col-lg-6 col-md-7 col-sm-7">
+                            <div class="col-xl-6 col-lg-6 col-md-7">
                                 <div class="hero__caption">
                                     <h1 data-animation="fadeInLeft" data-delay=".4s" data-duration="2000ms"> {{$slider->title}} </h1>
                                     <p data-animation="fadeInLeft" data-delay=".7s" data-duration="2000ms"> {{$slider->subtitle}} </p>
@@ -265,5 +265,37 @@
             </div>
         </div> --}}
         <!--(5) Popular Article End -->
+
+        <!--? Shop Method Start-->
+        <div class="shop-method-area">
+            <div class="container">
+                <div class="method-wrapper">
+                    <div class="row d-flex justify-content-between">
+                        <div class="col-xl-4 col-lg-4 col-md-6">
+                            <div class="single-method mb-40">
+                                <i class="ti-package"></i>
+                                <h6>運送超溫柔</h6>
+                                <p>完美呈現，給你最期待的禮物時間</p>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-6">
+                            <div class="single-method mb-40">
+                                <i class="ti-unlock"></i>
+                                <h6>隱私不用怕</h6>
+                                <p>保護你們的親密時光</p>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-6">
+                            <div class="single-method mb-40">
+                                <i class="ti-reload"></i>
+                                <h6>禮物不喜歡</h6>
+                                <p>收禮的朋友們可以自行來網站換貨呦</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Shop Method End-->
 
  @endsection

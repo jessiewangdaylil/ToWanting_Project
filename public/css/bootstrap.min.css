@@ -136,6 +136,7 @@ dfn {
 b,
 strong {
     font-weight: bolder;
+    font-size: 21px;
 }
 small {
     font-size: 80%;

@@ -2,7 +2,7 @@
 @section('title','首頁')
 @section('content')
       <!-- Hero Area Start-->
-        <div class="slider-area ">
+        {{-- <div class="slider-area ">
             <div class="single-slider slider-height2 d-flex align-items-center">
                 <div class="container">
                     <div class="row">
@@ -14,7 +14,40 @@
                     </div>
                 </div>
             </div>
+        </div> --}}
+<div class="carousel-wrapper">
+  <div id="carouselExample" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{{asset('img/gallery/banner1.png')}}" alt="">
         </div>
+        <div class="carousel-item">
+            <img src="{{asset('img/gallery/banner2.png')}}" alt="">
+
+        </div>
+        <div class="carousel-item">
+            <img src="{{asset('img/gallery/banner3.png')}}" alt="">
+        </div>
+    </div>
+
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExample" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExample" data-slide-to="1"></li>
+        <li data-target="#carouselExample" data-slide-to="2"></li>
+    </ol>
+
+    <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+
+
         <!-- Hero Area End-->
         <!-- Latest Products Start -->
         <section class="popular-items latest-padding">
@@ -73,7 +106,7 @@
             </div>
         </section>
         <!-- Latest Products End -->
-        <!--? Shop Method Start-->
+        {{-- <!--? Shop Method Start-->
         <div class="shop-method-area">
             <div class="container">
                 <div class="method-wrapper">
@@ -103,6 +136,6 @@
                 </div>
             </div>
         </div>
-        <!-- Shop Method End-->
+        <!-- Shop Method End--> --}}
 
  @endsection

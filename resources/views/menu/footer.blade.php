@@ -4,13 +4,13 @@
        <div class="col-xl-2 col-lg-3 col-md-3 col-sm-5">
     @break
     @case(2)
-      <div class="col-xl-3 col-lg-3 col-md-4 col-sm-7">
+      <div class="col-xl-2 col-lg-3 col-md-4 col-sm-7">
     @break
     @case(3)
-      <div class="col-xl-3 col-lg-3 col-md-5 col-sm-7">
+      <div class="col-xl-2 col-lg-3 col-md-5 col-sm-7">
     @break
     @default
-      <div class="col-xl-3 col-lg-3 col-md-5 col-sm-7">
+      <div class="col-xl-2 col-lg-3 col-md-5 col-sm-7">
 @endswitch
         <div class="single-footer-caption mb-50">
                 <div class="footer-tittle">

@@ -64,6 +64,8 @@ Route::namespace ('App\Http\controllers')->group(function () {
         Artisan::call('route:cache');
         Artisan::call('view:clear');
         Artisan::call('config:cache');
+        Artisan::call('optimize:clear');
+
         return "all cleared ...";
     });
     Route::get('/test', function () {

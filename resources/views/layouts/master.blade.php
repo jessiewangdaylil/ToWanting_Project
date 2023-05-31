@@ -246,6 +246,14 @@
     $('#flash-overlay-modal').modal();
     <!-- Flash Message 3秒之後消失，非必須 -->
     $('div.alert').delay(3000).fadeOut(350);
+
+
+
+
+
+
+
+
     </script>
     {{-- <script src="{{ mix('js/app.js') }}"></script> --}}
  @livewireScripts

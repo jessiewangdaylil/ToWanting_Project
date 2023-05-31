@@ -38,6 +38,10 @@
                     @endforeach
                   </div>
 
+
+
+
+
                   @livewire('product-detail',
                     [
                       'class'=>[
