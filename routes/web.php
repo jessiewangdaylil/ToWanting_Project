@@ -32,6 +32,7 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 Route::namespace ('App\Http\controllers')->group(function () {
+    Route::get('/logout', 'SiteController@logout');
     Route::get('/about', 'SiteController@about');
     Route::get('/index', 'SiteController@index');
     Route::get('/shop', 'SiteController@shop');

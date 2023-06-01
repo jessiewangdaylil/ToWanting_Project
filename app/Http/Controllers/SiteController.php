@@ -22,6 +22,12 @@ class SiteController extends Controller
         $this->middleware('auth')->only(['cart', 'confirmation', 'checkout', 'StoreComment']);
 
     }
+//===============================================================
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/index');
+    }
 
 //===============================================================
     public function about()
