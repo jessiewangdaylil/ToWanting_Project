@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
-use Laravel\Jetstream\HasProfilePhoto;
+use Laravel\Jetstream\HasProfilePhoto; //個人資料照片功能
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends \TCG\Voyager\Models\User

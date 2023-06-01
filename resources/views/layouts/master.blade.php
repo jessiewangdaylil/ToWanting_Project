@@ -92,12 +92,7 @@
                                         <span class="flaticon-search"></span>
                                     </div>
                                 </li>
-                                @if(Auth::check())
-                                {{-- <li><a href="{{url('/logout').'/'.Auth::user()->id}}"><i class="fa-solid fa-person-through-window"></i>></a></li> --}}
-                                    <li> <a href="{{url('/dashboard')}}"><span class="flaticon-user"></span></a></li>
-                                @else
-                                   <li> <a href="{{url('/login')}}"><span class="flaticon-user"></span></a></li>
-                                @endif
+                                <li> <a href="{{url('/login')}}"><span class="flaticon-user"></span></a></li>
                                 <li><a href="{{url('/cart')}}"><span class="flaticon-shopping-cart"></span></a> </li>
                             </ul>
                         </div>
