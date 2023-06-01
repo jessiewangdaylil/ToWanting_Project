@@ -1,5 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:200,300,400,500,600,700|Roboto:100,300,400,500,700&display=swap');
 
+/* 自添加區域 */
+
+/* product detail 商品輪播加購物車區 */
+
+.product_owl_cart_area {
+    padding: 20px;
+    border: 3px solid #d8918d;
+    border-radius: 30px;
+    height: 900px;
+}
+
+/* end */
+
 /* shop輪播圖 */
 
 .carousel-indicators {
@@ -23,10 +36,63 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0px 0px 20px 0px rgba(22, 22, 22, 0.2);
+
     /* height: 100vh; 調整高度以適應您的需求 */
 }
 
 /* end */
+
+/* 右邊懸浮圖示 */
+
+.header-right {
+    position: fixed;
+    top: 50%; /* 距離頁面頂部的距離，可以根據需要調整值 */
+    right: 20px; /* 距離頁面右側的距離，可以根據需要調整值 */
+    transform: translateY(-50%); /* 將元素上移自身高度的一半，以實現垂直置中效果 */
+}
+
+.header-right ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* 圖示之間的間距，可以根據需要調整值 */
+}
+
+.header-right ul li {
+    list-style: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    box-shadow: 0px 0px 3px 0px rgba(22, 22, 22, 0.1);
+}
+/* end */
+
+/* shop跑馬燈 */
+.marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    padding-top: 30px;
+}
+
+.marquee-content {
+    display: inline-block;
+    animation: marquee 25s linear infinite;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #d8918d;
+    font-size: 21px;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(300%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* end */
+
+/* 自訂區域end */
 
 .white-bg {
     background: #ffffff;
@@ -59,7 +125,7 @@
     color: #bb5a5a;
 }
 .theme-color {
-    color: #ff2020;
+    color: #bb5a5a;
 }
 .boxed-btn {
     background: #fff;
@@ -248,7 +314,7 @@ input:focus::-moz-placeholder {
     position: relative;
 }
 .theme-overlay::before {
-    background: #1696e7 none repeat scroll 0 0;
+    background: #bb5a5a none repeat scroll 0 0;
     content: '';
     height: 100%;
     left: 0;
@@ -1601,7 +1667,7 @@ input:focus::-moz-placeholder {
     position: relative;
     border-style: solid;
     border-width: 1px;
-    border-top-color: #ff2020;
+    border-top-color: #bb5a5a;
     border-bottom-color: transparent;
     border-left-color: transparent;
     border-right-color: transparent;
@@ -1617,7 +1683,7 @@ input:focus::-moz-placeholder {
     transition: 0.6s;
 }
 .preloader .preloader-circle2 {
-    border-top-color: #0078ff;
+    border-top-color: #bb5a5a;
 }
 .preloader .preloader-img {
     position: absolute;
@@ -2581,10 +2647,11 @@ input:focus {
     justify-content: center;
 }
 .slider-height {
-    min-height: 980px;
+    min-height: 900px;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+    background-color: rgba(0, 0, 0, 0.8);
 }
 @media only screen and (min-width: 1200px) and (max-width: 1600px) {
     .slider-height {
@@ -2613,7 +2680,7 @@ input:focus {
 }
 .slider-height2 {
     background-image: url(../img/hero/about_hero.png);
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.3);
     min-height: 500px;
     background-repeat: no-repeat;
     background-position: center center;
@@ -2625,6 +2692,7 @@ input:focus {
 }
 .slider-area {
     overflow: hidden;
+    box-shadow: 0px 0px 20px 0px rgba(22, 22, 22, 0.2);
 }
 .slider-area .hero__img {
     position: relative;
@@ -2658,13 +2726,40 @@ input:focus {
         padding-left: 22px;
     }
 }
+
+/* 一進入頁面文字從無到有慢慢浮現 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 .slider-area .hero__caption h1 {
     text-transform: normal;
     font-size: 65px;
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 26px;
+
+    animation-name: fadeIn; /* 使用 fadeIn 動畫效果 */
+    animation-duration: 5s; /* 動畫執行時間為 2 秒 */
+    animation-delay: 0.4s; /* 延遲 0.4 秒後開始執行動畫 */
+    animation-fill-mode: forwards; /* 動畫結束後保持最終狀態 */
 }
+
+/* end */
+
+/* .slider-area .hero__caption h1 {
+    text-transform: normal;
+    font-size: 65px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 26px;
+} */
+
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .slider-area .hero__caption h1 {
         font-size: 60px;
@@ -2725,7 +2820,10 @@ input:focus {
 }
 .slide-bg {
     /* background: #f7ece5; */
-    background: #f7eeda;
+    /* background: #f7eeda; */
+    background-image: url(../img/hero/index-banner-bg.jpg);
+    background-color: rgba(0, 0, 0, 0.8);
+    background-position: bottom;
 }
 .slider-active button.slick-arrow {
     position: absolute;
@@ -2744,7 +2842,7 @@ input:focus {
     width: 60px;
     border-radius: 50%;
     cursor: pointer;
-    background: #ff2020;
+    background: #bb5a5a;
     -webkit-transition: 0.4s;
     -o-transition: 0.4s;
     transition: 0.4s;
@@ -2829,7 +2927,7 @@ input:focus {
     }
 }
 .single-new-pro .product-caption span {
-    color: #ff2020;
+    color: #bb5a5a;
     font-size: 18px;
     font-weight: 500;
     display: block;
@@ -2890,6 +2988,7 @@ input:focus {
     border-bottom: 3px solid #bb5a5a;
     margin-bottom: 19px;
     position: relative;
+    box-shadow: 0px 0px 10px 0px rgba(22, 22, 22, 0.2);
 }
 .popular-items .single-popular-items .popular-img img {
     width: 100%;
@@ -3344,7 +3443,7 @@ input:focus {
 }
 .category-area .single-category .category-img .category-caption .collection {
     display: block;
-    color: #0071fe;
+    color: #bb5a5a;
     text-transform: capitalize;
     font-size: 30px;
     line-height: 1.1;
@@ -3563,7 +3662,7 @@ input:focus {
     text-align: right;
 }
 .best-collection-area .best-right-cap .best-single .single-cap.active {
-    background: #2577fd;
+    background: #bb5a5a;
     padding: 10px 30px;
     border-radius: 10px;
 }
@@ -3646,7 +3745,7 @@ input:focus {
 }
 .latest-wrapper .latest-area .latest-subscribe form button {
     padding: 20px 47px;
-    background: #2577fd;
+    background: #bb5a5a;
     font-size: 14px;
     font-weight: 300;
     position: absolute;
@@ -3856,7 +3955,7 @@ input:focus {
 }
 .item.list-group-item:nth-of-type(odd):hover,
 .item.list-group-item:hover {
-    background: #428bca;
+    background: #d8918d;
 }
 .item.list-group-item .list-group-image {
     margin-right: 10px;
@@ -3894,7 +3993,7 @@ input:focus {
 }
 .blog_area a:hover,
 .blog_area a :hover {
-    background: -webkit-linear-gradient(131deg, #ff2020 0%, #ff2020 99%);
+    background: -webkit-linear-gradient(131deg, #bb5a5a 0%, #bb5a5a 99%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-decoration: none;
@@ -4271,7 +4370,7 @@ input:focus {
     color: #ff8b23;
 }
 .blog_details a:hover {
-    color: #ff2020;
+    color: #bb5a5a;
 }
 .blog_details h2 {
     font-size: 18px;
@@ -4319,7 +4418,7 @@ input:focus {
     left: 10px;
     display: block;
     color: #fff;
-    background-color: #ff2020;
+    background-color: #bb5a5a;
     padding: 8px 15px;
     border-radius: 5px;
 }
@@ -4388,7 +4487,7 @@ input:focus {
     box-shadow: none;
 }
 .blog_right_sidebar .search_widget .input-group button {
-    background: #ff2020;
+    background: #bb5a5a;
     border-left: 0;
     border: 1px solid #f0e9ff;
     padding: 4px 15px;
@@ -4486,7 +4585,7 @@ input:focus {
     font-size: 13px;
 }
 .blog_right_sidebar .tag_cloud_widget ul li a:hover {
-    background: #ff2020;
+    background: #bb5a5a;
     color: #fff !important;
     -webkit-text-fill-color: #fff;
     text-decoration: none;
@@ -4661,7 +4760,7 @@ input:focus {
     display: inline-block;
 }
 .single-post-area .blog-author a:hover {
-    color: #ff2020;
+    color: #bb5a5a;
 }
 .single-post-area .blog-author p {
     margin-bottom: 0;
@@ -6374,7 +6473,7 @@ del {
 }
 .blog-area .single-blog .blog-caption .blog-cap-top span {
     color: #fff;
-    background: #ff2020;
+    background: #bb5a5a;
     padding: 4px 13px;
     text-transform: uppercase;
     font-size: 14px;
@@ -6387,7 +6486,7 @@ del {
     font-family: 'Lato', sans-serif;
 }
 .blog-area .single-blog .blog-caption .blog-cap-top ul li a {
-    color: #ff2020;
+    color: #bb5a5a;
     font-size: 14px;
 }
 .blog-area .single-blog .blog-caption .blog-cap-mid p a {
@@ -6403,7 +6502,7 @@ del {
     }
 }
 .blog-area .single-blog .blog-caption .blog-cap-mid p a:hover {
-    color: #ff2020;
+    color: #bb5a5a;
 }
 .blog-area .single-blog .blog-caption .blog-cap-bottom {
     padding-top: 20px;
@@ -6434,7 +6533,7 @@ del {
     margin-bottom: 20px;
 }
 .single_blog_post .single_blog .single_appartment_content p a {
-    color: #ff2020;
+    color: #bb5a5a;
 }
 .single_blog_post .single_blog .single_appartment_content h4 {
     font-size: 24px;
@@ -6475,6 +6574,10 @@ del {
 .single_product_list .single_product_img {
     position: relative;
     margin: 35px 0 0 35px;
+}
+
+.single_product_img img {
+    border-radius: 50%;
 }
 
 @media (max-width: 991px) {
@@ -6609,9 +6712,14 @@ del {
     left: auto;
     right: 30px;
 }
-.product_image_area .single_product_text {
+/* .product_image_area .single_product_text {
     margin: 100px 0 200px;
+} */
+
+.product_image_area {
+    margin-bottom: 200px;
 }
+
 @media (max-width: 991px) {
     .product_image_area .single_product_text {
         margin: 40px 0 70px;
@@ -6750,7 +6858,7 @@ input:focus {
     color: #191d34;
 }
 .single_product_item h3 a:hover {
-    color: #2577fd;
+    color: #bb5a5a;
 }
 .single_product_item p {
     font-size: 20px;
@@ -8785,7 +8893,7 @@ input:focus {
 }
 .login_part .login_part_text .btn_3:hover {
     background-color: #fff;
-    color: #ff2020 !important;
+    color: #bb5a5a !important;
 }
 @media (max-width: 991px) {
     .login_part .login_part_form {
@@ -9248,7 +9356,7 @@ input:focus {
     margin-bottom: 35px;
 }
 .confirmation_part .confirmation_tittle span {
-    color: #ff2020;
+    color: #bb5a5a;
 }
 .confirmation_part .single_confirmation_details {
     background-color: #f7f7f7;
@@ -9410,7 +9518,7 @@ input:focus {
     height: 10px;
     top: 5px;
     left: 0;
-    background-color: #ff2020;
+    background-color: #bb5a5a;
     border-radius: 50%;
 }
 .blog_part .single-home-blog .card span {
@@ -9477,7 +9585,7 @@ input:focus {
 .blog_part .single-home-blog .card h5:hover {
     -webkit-transition: 0.8s;
     transition: 0.8s;
-    color: #ff2020;
+    color: #bb5a5a;
 }
 .blog_part .single-home-blog .card ul {
     border-top: 1px solid #fdcb9e;
@@ -9542,7 +9650,7 @@ input:focus {
 }
 .about_us .about_us_content h5 {
     font-size: 20px;
-    color: #ff2020;
+    color: #bb5a5a;
     font-weight: 400;
 }
 @media (max-width: 576px) {

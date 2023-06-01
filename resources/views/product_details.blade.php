@@ -29,7 +29,7 @@
             <div class="container">
             <div class="row justify-content-center">
 
-                <div class="col-lg-5">
+                <div class="col-lg-5 product_owl_cart_area">
                   <div class="product_img_slide owl-carousel">
                     @foreach ($item->picsArray as $pic)
                     <div class="single_product_img">
@@ -37,8 +37,6 @@
                     </div>
                     @endforeach
                   </div>
-
-
 
 
 
@@ -62,9 +60,10 @@
                 </div>
 
 
+                {{-- 右邊圖文區 --}}
                 <div class="col-lg-7">
                 <div class="single_product_text text-center">
-                    {{-- <h3>{{$item->title}} </h3> --}}
+                    <h3>商品描述 </h3>
                     <p>
                         {!!$item->chars!!}
                     </p>
