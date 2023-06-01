@@ -103,6 +103,7 @@
     animation-duration: 20s;
     animation-timing-function: ease-out;
     animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
 }
 
 @keyframes fall {
@@ -125,6 +126,7 @@
     animation-duration: 15s;
     animation-timing-function: ease-out;
     animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
 }
 
 @keyframes fall {
@@ -147,6 +149,7 @@
     animation-duration: 25s;
     animation-timing-function: ease-out;
     animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
 }
 
 @keyframes fall {
@@ -169,6 +172,7 @@
     animation-duration: 20s;
     animation-timing-function: ease-out;
     animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
 }
 
 @keyframes fall {
@@ -191,6 +195,7 @@
     animation-duration: 30s;
     animation-timing-function: ease-out;
     animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
 }
 
 @keyframes fall {
