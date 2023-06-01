@@ -47,8 +47,24 @@
   </div>
 </div>
 
-
         <!-- Hero Area End-->
+
+
+        {{-- 訊息跑馬燈 --}}
+        <div class="marquee">
+          <div class="marquee-content">
+            <!-- 在此放置跑馬燈的內容 -->
+            <span>開箱禮物，驚喜滿足，美好溫度，與你共度</span>
+            {{-- <span></span> --}}
+          </div>
+        </div>
+
+
+
+        {{-- 訊息跑馬燈end --}}
+
+
+
         <!-- Latest Products Start -->
         <section class="popular-items latest-padding">
             <div class="container">

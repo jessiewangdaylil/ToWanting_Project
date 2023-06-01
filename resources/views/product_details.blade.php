@@ -29,7 +29,7 @@
             <div class="container">
             <div class="row justify-content-center">
 
-                <div class="col-lg-5">
+                <div class="col-lg-5 product_owl_cart_area">
                   <div class="product_img_slide owl-carousel">
                     @foreach ($item->picsArray as $pic)
                     <div class="single_product_img">
