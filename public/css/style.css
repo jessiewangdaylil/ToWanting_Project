@@ -67,23 +67,26 @@
 /* end */
 
 /* shop跑馬燈 */
+.marquee-bg {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
 .marquee {
     overflow: hidden;
     white-space: nowrap;
-    padding-top: 30px;
+    /* padding-top: 30px; */
 }
 
 .marquee-content {
     display: inline-block;
-    animation: marquee 25s linear infinite;
-    background-color: rgba(255, 255, 255, 0.1);
+    animation: marquee 60s linear infinite;
     color: #d8918d;
-    font-size: 21px;
+    font-size: 18px;
 }
 
 @keyframes marquee {
     0% {
-        transform: translateX(300%);
+        transform: translateX(60%);
     }
     100% {
         transform: translateX(-100%);
