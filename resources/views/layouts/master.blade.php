@@ -24,6 +24,7 @@
    <link rel="stylesheet" href="{{asset('fontawesome-free-6.2.1-web\css\all.min.css')}}">
    @yield('css')
    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.1/dist/cdn.min.js"></script>
+   <script src="https://kit.fontawesome.com/2492741ca4.js" crossorigin="anonymous"></script>
    @livewireStyles
 
 </head>
@@ -94,7 +95,10 @@
                                 </li>
                                 @if(Auth::check())
                                 {{-- <li><a href="{{url('/logout').'/'.Auth::user()->id}}"><i class="fa-solid fa-person-through-window"></i>></a></li> --}}
-                                    <li> <a href="{{url('/dashboard')}}"><span class="flaticon-user"></span></a></li>
+                                    <li class="centered-icon"> <a href="{{url('/dashboard')}}"><i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
+
+                                    {{-- <li> <a href="{{url('/dashboard')}}">                                <img src="{{asset('img/logout.png')}}" alt=""></a></li> --}}
+
                                 @else
                                    <li> <a href="{{url('/login')}}"><span class="flaticon-user"></span></a></li>
                                 @endif

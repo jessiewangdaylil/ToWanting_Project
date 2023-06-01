@@ -21,6 +21,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 mb-5 mb-lg-0">
+
+                      <img src="{{asset('img/gift1.png')}}" alt="" class="falling-image-1">
+                      <img src="{{asset('img/gift2.png')}}" alt="" class="falling-image-2">
+                      <img src="{{asset('img/gift3.png')}}" alt="" class="falling-image-3">
+                      <img src="{{asset('img/gift4.png')}}" alt="" class="falling-image-4">
+                      <img src="{{asset('img/gift5.png')}}" alt="" class="falling-image-5">
+
                         <div class="blog_left_sidebar">
                         @foreach ($articles as $article)
                            <article class="blog_item">

@@ -55,7 +55,7 @@
 .header-right ul {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* 圖示之間的間距，可以根據需要調整值 */
+    gap: 20px; /* 圖示之間的間距，可以根據需要調整值 */
 }
 
 .header-right ul li {
@@ -91,6 +91,137 @@
     100% {
         transform: translateX(-100%);
     }
+}
+
+/* end */
+
+/* blog掉落禮物 */
+
+.falling-image-1 {
+    position: relative;
+    animation-name: fall;
+    animation-duration: 20s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fall {
+    0% {
+        top: -100px;
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        top: 100%;
+        opacity: 0;
+        transform: translateX(100px);
+    }
+}
+/* ----- */
+.falling-image-2 {
+    position: relative;
+    animation-name: fall;
+    animation-duration: 15s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fall {
+    0% {
+        top: -80px;
+        opacity: 1;
+        transform: translateX(50px);
+    }
+
+    100% {
+        top: 100%;
+        opacity: 0;
+        transform: translateX(10px);
+    }
+}
+/* ----- */
+.falling-image-3 {
+    position: relative;
+    animation-name: fall;
+    animation-duration: 25s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fall {
+    0% {
+        top: -100px;
+        opacity: 1;
+        transform: translateX(100px);
+    }
+
+    100% {
+        top: 100%;
+        opacity: 0;
+        transform: translateX(50px);
+    }
+}
+/* ----- */
+.falling-image-4 {
+    position: relative;
+    animation-name: fall;
+    animation-duration: 20s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fall {
+    0% {
+        top: -100px;
+        opacity: 1;
+        transform: translateX(120);
+    }
+
+    100% {
+        top: 100%;
+        opacity: 0;
+        transform: translateX(200px);
+    }
+}
+/* ----- */
+.falling-image-5 {
+    position: relative;
+    animation-name: fall;
+    animation-duration: 30s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fall {
+    0% {
+        top: -100px;
+        opacity: 1;
+        transform: translateX(-50);
+    }
+
+    100% {
+        top: 100%;
+        opacity: 0;
+        transform: translateX(150px);
+    }
+}
+
+/* end */
+
+/* 登出圖示 */
+.centered-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+i {
+    color: #d8918d;
+}
+
+i:hover {
+    color: #bb5a5a;
 }
 
 /* end */
