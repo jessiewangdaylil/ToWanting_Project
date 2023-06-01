@@ -38,8 +38,7 @@
                     @endforeach
                   </div>
 
-
-
+              @if(Auth::check())
                   @livewire('product-detail',
                     [
                       'class'=>[
@@ -56,18 +55,9 @@
                       'item'=>$item
                     ],
                     key($item->id))
-
                 </div>
-
-
-                {{-- 右邊圖文區 --}}
-                <div class="col-lg-7">
-                <div class="single_product_text text-center">
-                    <h3>商品描述 </h3>
-                    <p>
-                        {!!$item->chars!!}
-                    </p>
-                    {{-- @livewire('product-detail',
+                @else
+                @livewire('product-detail-unlogin',
                     [
                       'class'=>[
                         "card_area",
@@ -82,34 +72,16 @@
                         "add_to_cart"],
                       'item'=>$item
                     ],
-                    key($item->id)) --}}
+                    key($item->id))
+                </div>
+              @endif
 
-
-                    {{-- <div class="card_area">
-                        <div class="product_count_area">
-                            <p>{{__('Quantity')}}</p>
-                            <div class="product_count d-inline-block">
-                                <span class="product_count_item inumber-decrement">
-                                  <i class="ti-minus"></i>
-                                </span>
-                                <input class="product_count_item " type="text" value="1" min="0" max="10">
-                                <span class="product_count_item number-increment">
-                                   <i class="ti-plus"></i>
-                                </span>
-                            </div>
-                            <p>${{$item->price_new}}</p>
-                        </div>
-                        @if ($item->stock == 0)
-                            <div class="add_to_cart">
-                                <a href="#" class="btn_3">{{__('Sold out')}}</a>
-                            </div>
-                        @else
-                            <div class="add_to_cart">
-                                <a href="#" class="btn_3">{{__('Add to cart')}}</a>
-                            </div>
-                        @endif
-
-                    </div> --}}
+                <div class="col-lg-7">
+                <div class="single_product_text text-center">
+                    {{-- <h3>{{$item->title}} </h3> --}}
+                    <p>
+                        {!!$item->chars!!}
+                    </p>
                 </div>
                 </div>
             </div>

@@ -137,6 +137,7 @@ class ProductDetail extends Component
             } else {
                 $this->count = 1;
                 $this->subTotal = 0;
+
             }
         } else {
             $this->count = 1;
