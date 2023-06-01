@@ -6,7 +6,6 @@
         <div class="col-md-12 d-flex flex-column align-items-center">
           <p>單價${{$item->price_new}}</p>
           <br>
-          {{-- <p>{{__('Quantity')}}</p> --}}
           {{-- @include('includes._cart_counter') --}}
         </div>
       </div>
